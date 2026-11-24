@@ -300,6 +300,7 @@
     .qcard { padding: 18px; box-shadow: 4px 4px 0 var(--ink); }
     .answer-row { flex-direction: column; }
   }
+  .credit { position: fixed; right: 10px; bottom: 8px; z-index: 30; font: 600 11px 'JetBrains Mono', monospace; letter-spacing: .06em; color: var(--muted); background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 3px 7px; opacity: .85; pointer-events: none; }
 </style>
 </head>
 <body>
@@ -1958,5 +1959,6 @@ setInterval(() => { loadBoard(); flushScores(); checkReset(); }, 30000);
 setInterval(loadNotices, 15000);
 setInterval(maybePop, 1500);
 </script>
+<div class="credit">areeves</div>
 </body>
 </html>
