@@ -301,6 +301,34 @@
     .qcard { padding: 18px; box-shadow: 4px 4px 0 var(--ink); }
     .answer-row { flex-direction: column; }
   }
+  /* account */
+  .acct-row { display: flex; justify-content: flex-end; margin-bottom: 10px; }
+  .acct-btn { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 11px; letter-spacing: .1em; border: 2px solid var(--ink); background: var(--ink); color: var(--bg); padding: 7px 12px; border-radius: 99px; cursor: pointer; white-space: nowrap; }
+  .acct-btn:hover { filter: brightness(1.15); }
+  .acct-btn.in { background: var(--card); color: var(--ink); border-color: var(--rule); }
+  .acct-btn.in::before { content: '✓ '; color: var(--green); }
+  .auth { position: fixed; inset: 0; z-index: 110; display: grid; place-items: center; padding: 20px; background: rgba(10, 12, 30, .62); backdrop-filter: blur(3px); animation: pfade .2s ease; }
+  .auth-card { position: relative; width: min(420px, 100%); background: var(--card); color: var(--ink); border: 3px solid var(--ink); border-radius: 18px; padding: 24px 24px 22px; box-shadow: 8px 8px 0 var(--ink); animation: ppop .35s cubic-bezier(.2, 1.6, .4, 1); }
+  .auth-x { position: absolute; top: 10px; right: 12px; border: 0; background: transparent; color: var(--muted); font-size: 26px; line-height: 1; cursor: pointer; padding: 4px 8px; }
+  .auth-x:hover { color: var(--ink); }
+  .auth-tabs { display: flex; border: 1px solid var(--rule); background: var(--bg); border-radius: 99px; padding: 3px; width: max-content; margin-bottom: 16px; }
+  .auth-tabs button { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 11px; letter-spacing: .12em; border: 0; background: transparent; color: var(--ink-2); padding: 7px 14px; border-radius: 99px; cursor: pointer; }
+  .auth-tabs button.on { background: var(--ink); color: var(--bg); }
+  .auth-card h2 { font-family: 'Inter Tight', 'Inter', sans-serif; font-weight: 900; font-size: 28px; letter-spacing: -.03em; margin-bottom: 6px; }
+  .auth-sub { font-size: 14px; line-height: 1.45; color: var(--ink-2); margin-bottom: 16px; }
+  .auth-card label { display: block; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: .14em; color: var(--muted); margin-bottom: 12px; }
+  .auth-card input { display: block; width: 100%; margin-top: 5px; font: inherit; font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 500; letter-spacing: 0; color: var(--ink); background: var(--bg); border: 2px solid var(--rule); border-radius: 10px; padding: 11px 12px; }
+  .auth-card input:focus { outline: none; border-color: var(--ink); }
+  .auth-err { min-height: 18px; font-size: 13px; color: var(--red); margin: -2px 0 8px; }
+  .auth-err.ok { color: var(--green); }
+  .auth-go { width: 100%; padding: 13px; font: inherit; font-size: 16px; font-weight: 700; color: var(--bg); background: var(--ink); border: 2px solid var(--ink); border-radius: 12px; cursor: pointer; }
+  .auth-go:disabled { opacity: .6; cursor: wait; }
+  .auth-go.ghost { background: transparent; color: var(--ink); margin-top: 10px; }
+  .auth-stat { display: flex; gap: 10px; margin: 4px 0 18px; }
+  .auth-stat div { flex: 1; border: 1px solid var(--rule); border-radius: 12px; padding: 10px 12px; background: var(--bg); }
+  .auth-stat b { display: block; font-family: 'JetBrains Mono', monospace; font-size: 20px; }
+  .auth-stat span { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: .12em; color: var(--muted); }
+  .auth-note { font-size: 12px; color: var(--muted); margin-top: 12px; line-height: 1.4; }
   .credit { position: fixed; right: 10px; bottom: 8px; z-index: 30; font: 600 11px 'JetBrains Mono', monospace; letter-spacing: .06em; color: var(--muted); background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 3px 7px; opacity: .85; text-decoration: none; cursor: pointer; transition: opacity .15s, transform .15s; }
   .credit:hover { opacity: 1; transform: translateY(-1px); color: var(--ink); }
 </style>
@@ -309,6 +337,7 @@
 <div class="layout">
 <aside class="lbside" id="boardSide"></aside>
 <div class="page">
+  <div class="acct-row"><button class="acct-btn" id="acctBtn" type="button">LOG IN / SIGN UP</button></div>
   <div class="topbar">
     <div class="kicker">A-LEVEL REVISION</div>
     <div class="right">
@@ -331,6 +360,7 @@
   </div>
   <div id="notices"></div>
   <div id="popup" class="popup hidden"></div>
+  <div id="auth" class="auth hidden"></div>
 
   <div class="title">
     <h1>Little</h1>
@@ -2828,6 +2858,139 @@ async function flushScores() {
   flushing = false;
 }
 function recordAnswer(item) { S.pending.push(item); save(); flushScores(); }
+
+/* ======================= ACCOUNTS (email + password) ======================= */
+const SB_AUTH = 'https://wtedtqaiyormmfilqmja.supabase.co/auth/v1/';
+let AUTH_MODE = 'up', authBusy = false;
+function authNiceError(m) {
+  m = String(m || '');
+  if (/invalid login credentials/i.test(m)) return 'Wrong email or password.';
+  if (/already registered|already been registered|already exists/i.test(m)) return 'That email already has an account. Press LOG IN instead.';
+  if (/invalid format|validate email|invalid email/i.test(m)) return 'That email doesn\'t look right.';
+  if (/at least 6|password should be|weak password/i.test(m)) return 'Your password needs at least 6 characters.';
+  if (/rate limit|too many|429/i.test(m)) return 'Too many tries. Wait a minute and try again.';
+  if (/email not confirmed/i.test(m)) return 'This account isn\'t switched on yet. Ask the site owner.';
+  if (/signups not allowed|signup is disabled/i.test(m)) return 'Sign ups are turned off right now.';
+  if (/failed to fetch|network/i.test(m)) return 'Couldn\'t connect. Check your internet.';
+  return m || 'Something went wrong.';
+}
+async function authCall(path, body) {
+  const r = await fetch(SB_AUTH + path, { method: 'POST', headers: { apikey: SB_KEY, 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  let d = {}; try { d = await r.json(); } catch (e) {}
+  if (!r.ok) throw new Error(authNiceError(d.msg || d.error_description || d.message || d.error || ('error ' + r.status)));
+  return d;
+}
+async function waitForScores() {
+  for (let i = 0; i < 12 && S.pending.length; i++) { await flushScores(); if (S.pending.length) await new Promise(r => setTimeout(r, 800)); }
+  if (S.pending.length) throw new Error('Still saving your last answers. Try again in a moment.');
+}
+async function linkAccount(token, email) {
+  await deviceReady;
+  await waitForScores();
+  const r = await fetch(SB_URL + 'lp_account', { method: 'POST',
+    headers: { apikey: SB_KEY, Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ p_secret: S.secret, p_device: DEVICE }) });
+  const t = await r.text();
+  if (!r.ok) { let m = 'Something went wrong.'; try { m = JSON.parse(t).message || m; } catch (e) {} throw new Error(m); }
+  const d = JSON.parse(t);
+  S.secret = d.secret; S.name = d.name; S.account = { email, points: d.points }; save();
+  $('#who').value = d.name;
+  drawAcctBtn(); loadBoard(); loadNotices();
+  return d;
+}
+function drawAcctBtn() {
+  const b = $('#acctBtn');
+  if (S.account) { b.textContent = 'ACCOUNT'; b.classList.add('in'); b.title = 'Signed in as ' + S.account.email; }
+  else { b.textContent = 'LOG IN / SIGN UP'; b.classList.remove('in'); b.title = ''; }
+}
+function myRow() { return (BOARD || []).find(r => r.name === S.name); }
+function closeAuth() { $('#auth').classList.add('hidden'); $('#auth').innerHTML = ''; }
+function openAuth(mode) {
+  const box = $('#auth');
+  if (S.account) {
+    const row = myRow();
+    box.innerHTML = `<div class="auth-card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <button type="button" class="auth-x" aria-label="Close">×</button>
+      <h2 id="authTitle">Your account</h2>
+      <p class="auth-sub">Signed in as <b>${esc(S.account.email)}</b>. Your points are saved to this account, so you can sign in on any device and carry on.</p>
+      <div class="auth-stat"><div><span>NAME</span><b>${esc(S.name || '—')}</b></div><div><span>POINTS</span><b>${row ? row.points : (S.account.points ?? '—')}</b></div></div>
+      <button class="auth-go" type="button" id="authClose">Keep playing</button>
+      <button class="auth-go ghost" type="button" id="authOut">Sign out</button>
+      <p class="auth-note">Change your name with the NAME box at the top. Forgot your password? Ask the site owner to reset it.</p>
+    </div>`;
+    box.classList.remove('hidden');
+    box.querySelector('#authClose').onclick = closeAuth;
+    box.querySelector('#authOut').onclick = signOut;
+  } else {
+    AUTH_MODE = mode || AUTH_MODE;
+    const up = AUTH_MODE === 'up';
+    box.innerHTML = `<form class="auth-card" id="authForm" novalidate role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <button type="button" class="auth-x" aria-label="Close">×</button>
+      <div class="auth-tabs"><button type="button" data-m="in" class="${up ? '' : 'on'}">LOG IN</button><button type="button" data-m="up" class="${up ? 'on' : ''}">SIGN UP</button></div>
+      <h2 id="authTitle">${up ? 'Make an account' : 'Welcome back'}</h2>
+      <p class="auth-sub" id="authSub">${authSubText(up)}</p>
+      <label>EMAIL<input id="authEmail" type="email" autocomplete="email" inputmode="email" spellcheck="false" autocapitalize="off" required></label>
+      <label>PASSWORD<input id="authPw" type="password" autocomplete="${up ? 'new-password' : 'current-password'}" minlength="6" required placeholder="${up ? 'At least 6 characters' : ''}"></label>
+      <div class="auth-err" id="authErr" role="status"></div>
+      <button class="auth-go" id="authGo" type="submit">${up ? 'Sign up' : 'Log in'}</button>
+    </form>`;
+    box.classList.remove('hidden');
+    box.querySelectorAll('.auth-tabs button').forEach(b => b.onclick = () => setAuthMode(b.dataset.m));
+    box.querySelector('#authForm').onsubmit = submitAuth;
+    setTimeout(() => box.querySelector('#authEmail').focus(), 30);
+  }
+  box.querySelector('.auth-x').onclick = closeAuth;
+}
+function authSubText(up) {
+  const pts = (myRow() || {}).points || 0;
+  return up
+    ? `Save your score so it keeps adding up, on any device.${S.name ? ` Your name <b>${esc(S.name)}</b>${pts ? ` and your <b>${pts} points</b>` : ''} will move into the account.` : ''}`
+    : `Log in to carry on with your score.${pts ? ` The <b>${pts} points</b> on this device will be added to your account.` : ''}`;
+}
+function setAuthMode(m) {
+  if (authBusy) return;
+  AUTH_MODE = m; const up = m === 'up';
+  document.querySelectorAll('.auth-tabs button').forEach(b => b.classList.toggle('on', b.dataset.m === m));
+  $('#authTitle').textContent = up ? 'Make an account' : 'Welcome back';
+  $('#authSub').innerHTML = authSubText(up);
+  $('#authPw').autocomplete = up ? 'new-password' : 'current-password';
+  $('#authPw').placeholder = up ? 'At least 6 characters' : '';
+  $('#authGo').textContent = up ? 'Sign up' : 'Log in';
+  $('#authErr').textContent = '';
+}
+async function submitAuth(e) {
+  e.preventDefault();
+  if (authBusy) return;
+  const email = $('#authEmail').value.trim().toLowerCase(), pw = $('#authPw').value;
+  const err = $('#authErr'), go = $('#authGo');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent = 'Type your email, like name@example.com'; return; }
+  if (pw.length < 6) { err.textContent = 'Your password needs at least 6 characters.'; return; }
+  authBusy = true; go.disabled = true; err.className = 'auth-err'; err.textContent = AUTH_MODE === 'up' ? 'Making your account…' : 'Logging in…';
+  try {
+    let sess = AUTH_MODE === 'up' ? await authCall('signup', { email, password: pw }) : await authCall('token?grant_type=password', { email, password: pw });
+    if (!sess.access_token && AUTH_MODE === 'up') sess = await authCall('token?grant_type=password', { email, password: pw });
+    if (!sess.access_token) throw new Error('Couldn\'t sign you in. Try LOG IN.');
+    const d = await linkAccount(sess.access_token, email);
+    err.className = 'auth-err ok';
+    err.textContent = d.new ? 'Account made ✓ Your score is saved.' : d.added ? `Logged in ✓ Added ${d.added} points from this device.` : 'Logged in ✓';
+    setTimeout(closeAuth, 1300);
+  } catch (ex) {
+    err.className = 'auth-err'; err.textContent = authNiceError(ex.message);
+    go.disabled = false;
+  }
+  authBusy = false;
+}
+async function signOut() {
+  try { await waitForScores(); } catch (e) {}
+  S.account = null; S.secret = uuid(); delete S.name; S.pending = []; save();
+  $('#who').value = '';
+  drawAcctBtn(); closeAuth(); loadBoard();
+  whoMsg('Signed out', 'ok');
+}
+$('#acctBtn').onclick = () => openAuth();
+$('#auth').addEventListener('click', e => { if (e.target.id === 'auth') closeAuth(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('#auth').classList.contains('hidden')) closeAuth(); });
+drawAcctBtn();
 
 /* ======================= NOTICES & PRIVATE MESSAGES ======================= */
 S.dismissed ||= []; S.popped ||= [];
