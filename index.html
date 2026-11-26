@@ -330,6 +330,14 @@
   .auth-stat span { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: .12em; color: var(--muted); }
   .auth-note { font-size: 12px; color: var(--muted); margin-top: 12px; line-height: 1.4; }
   .fixnote { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .msg.wrong { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  .btn.appeal { flex: 0 0 auto; font-size: 12px; padding: 5px 11px; }
+  .btn.appeal:disabled { opacity: .6; cursor: not-allowed; }
+  .appeal-wait { animation: appealPulse 1.2s ease-in-out infinite; }
+  @keyframes appealPulse { 50% { opacity: .45; } }
+  .appeal-note { font-size: 14px; margin-top: 8px; padding: 8px 10px; border-radius: 10px; line-height: 1.4; }
+  .appeal-note.won { background: color-mix(in srgb, var(--green) 14%, transparent); }
+  .appeal-note.lost { background: color-mix(in srgb, var(--red) 12%, transparent); }
   .credit { position: fixed; right: 10px; bottom: 8px; z-index: 30; font: 600 11px 'JetBrains Mono', monospace; letter-spacing: .06em; color: var(--muted); background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 3px 7px; opacity: .85; pointer-events: none; }
 </style>
 </head>
@@ -2527,6 +2535,7 @@ const ELEMENTS = { fe: 'iron', cu: 'copper', ni: 'nickel', cr: 'chromium', co: '
 for (const o of [SPELL_WORD, NUMW, IRREG, ELEMENTS]) Object.setPrototypeOf(o, null);
 const ELEMENT_Q = /\b(metal|metals|element|elements|ion|ions|atom|catalyst|transition|halogen|halogens|group|period|noble gas|alkali)\b/i;
 
+let EXTRA_ANS = Object.create(null);   // subject + question → [{a, p}], approved appeal answers
 let PHRASE_MAP = null, SYN = null, GENERIC = null, VOCAB = null, DF = null, NEG_C = null, CON_C = null, VOCAB_ALL = null, VOCAB_BY = {};
 let VSURF = null, VSURF_ALL = null, VSURF_BY = {}, KNOWN_BY = {};
 const BASE_CACHE = new Map(), CANON_CACHE = new Map();
@@ -2748,6 +2757,11 @@ function parseAnswers(str, prompt = '', subj = '') {
     aliases,
     pts: n === 1 ? MAX_PTS : 5 + Math.round((50 * i / (n - 1)) / 5) * 5
   }));
+  // answers you approved from appeals (loaded from the database) join the question at their own points
+  for (const x of (EXTRA_ANS[subj + '\u0001' + prompt] || [])) {
+    if (answers.some(a => a.keys.includes(norm(x.a)))) continue;
+    answers.push({ display: x.a, keys: [norm(x.a)], stems: [stemKey(x.a)], cores: [], aliases: [x.a], pts: x.p, extra: true });
+  }
   // a short form only counts if it points at exactly one answer
   const owners = Object.create(null);
   for (const a of answers) for (const c of new Set(a.cores)) (owners[c] ||= new Set()).add(a);
@@ -3005,7 +3019,7 @@ function startPaper(daily, opts = {}) {
 function renderQuestion() {
   clearPen();
   const [prompt, , topic] = BANK[P.subj][P.qs[P.i]];
-  P.answered = false; P.qText = prompt; P.wrong = []; P.pending = null; P.qStart = Date.now();
+  P.answered = false; P.qText = prompt; P.wrong = []; P.pending = null; P.qStart = Date.now(); P.appealed = false; P.endAt = null;
   $('#paper').innerHTML = `
     <div class="paper-head">
       <span class="mono">${esc(P.subj.toUpperCase())} · ${P.daily ? 'PAPER ' + today() : 'CUSTOM PAPER'}</span>
@@ -3033,8 +3047,9 @@ function renderQuestion() {
   if (P.timed) startTimer();
 }
 
-function startTimer() {
-  const end = Date.now() + TIME * 1000;
+function startTimer(ms = TIME * 1000) {
+  const end = Date.now() + ms;
+  P.endAt = end;
   const bar = $('#timer > div'), txt = $('#timerText');
   stopTimer();
   P.t = setInterval(() => {
@@ -3073,12 +3088,14 @@ function attempt(raw) {
   }
   // wrong: say so and let them try again
   P.wrong.push(text);
-  box.innerHTML = `<div class="msg wrong">✗ <b>${esc(text)}</b> isn't a correct answer. Try again.</div>`;
+  box.innerHTML = `<div class="msg wrong"><span>✗ <b>${esc(text)}</b> isn't a correct answer. Try again.</span>${appealButton()}</div>`;
+  const ab = $('#appealBtn');
+  if (ab) ab.onclick = () => doAppeal(text);
   input.value = ''; input.focus();
   input.classList.remove('shake'); void input.offsetWidth; input.classList.add('shake');
 }
 
-function finalize(hit, how, given = '', fix = '') {
+function finalize(hit, how, given = '', fix = '', note = '') {
   if (P.answered) return;
   P.answered = true; stopTimer();
   const answers = currentAnswers();
@@ -3087,11 +3104,14 @@ function finalize(hit, how, given = '', fix = '') {
   P.log.push({ q: P.qText, given, hit: hit?.display || null, pts, wrong: P.wrong.slice() });
   // when the marker read past a typo or a different wording, keep what they actually typed too (shows in the admin site)
   const noted = hit && (fix === 'fixed' || fix === 'close') && norm(given) !== norm(hit.display);
-  recordAnswer({ p: pts, s: P.subj, q: P.qText, a: hit ? (noted ? `${hit.display} (typed: ${given})`.slice(0, 80) : hit.display) : (given || (how === 'timeout' ? '(timed out)' : '(gave up)')), w: P.wrong.join(' | '), m: Date.now() - P.qStart });
+  const label = fix === 'appeal' ? `${hit.display === given ? given : hit.display + ' ← ' + given} (appeal won)`
+    : how === 'appeal-lost' ? `${given} (appeal lost)`
+    : hit ? (noted ? `${hit.display} (typed: ${given})` : hit.display) : (given || (how === 'timeout' ? '(timed out)' : '(gave up)'));
+  recordAnswer({ p: pts, s: P.subj, q: P.qText, a: label.slice(0, 80), w: P.wrong.join(' | '), m: Date.now() - P.qStart });
 
   let msg;
   if (hit) msg = pts >= 45 ? 'Deep cut. Beautiful.' : pts >= 30 ? 'Nicely off the beaten track.' : pts >= 15 ? 'Correct, but a few others got there too.' : 'Correct, but that\'s the one everyone says.';
-  else msg = how === 'timeout' ? 'Out of time.' : 'No points this time.';
+  else msg = how === 'timeout' ? 'Out of time.' : how === 'appeal-lost' ? 'Appeal turned down, no points this time.' : 'No points this time.';
 
   $('#ansForm').querySelectorAll('input,button').forEach(el => el.disabled = true);
   $('#msg').innerHTML = '';
@@ -3102,6 +3122,8 @@ function finalize(hit, how, given = '', fix = '') {
       <span class="pts ${pts ? 'good' : 'zero'}" id="ptsNow">+${pts}</span>
       ${hit ? `<b>${esc(cap(hit.display))}</b>. ` : ''}${msg}
       ${noted ? `<div class="fixnote">You typed “${esc(given)}”${fix === 'fixed' ? ' (spelling fixed)' : ' (close enough)'}</div>` : ''}
+      ${fix === 'appeal' ? `<div class="appeal-note won">⚖️ Appeal accepted${hit.display !== given ? ` (you typed “${esc(given)}”)` : ''}. ${esc(note)}</div>` : ''}
+      ${how === 'appeal-lost' ? `<div class="appeal-note lost">⚖️ “${esc(given)}”: ${esc(note || 'not accepted.')}</div>` : ''}
       <div class="all-label mono">ALL ANSWERS · MOST OBVIOUS → MOST OBSCURE</div>
       <div class="all">${answers.map(a => `<span class="ans ${hit && hit.display === a.display ? 'mine' : ''}">${esc(cap(a.display))}<i>${a.pts}</i></span>`).join('')}</div>
     </div></div>
@@ -3404,6 +3426,92 @@ async function flushScores() {
   flushing = false;
 }
 function recordAnswer(item) { S.pending.push(item); save(); flushScores(); }
+
+/* ======================= APPEALS (checked by Claude) ======================= */
+// A wrong answer can be appealed once. The AI checks it against the question; win = points, lose = 0.
+// Lose 10 appeals within 3 hours and appeals are paused for 3 hours (the database keeps track).
+const APPEAL_URL = 'https://wtedtqaiyormmfilqmja.supabase.co/functions/v1/appeal';
+const APPEAL = { banUntil: 0, losses: 0 };
+function appealWait() {
+  const ms = APPEAL.banUntil - Date.now();
+  if (ms <= 0) return '';
+  const h = Math.floor(ms / 3600000), m = Math.ceil((ms % 3600000) / 60000);
+  return h ? `${h}h ${m}m` : `${m}m`;
+}
+function appealButton() {
+  if (P.appealed || P.answered) return '';
+  const wait = appealWait();
+  if (wait) return `<button class="btn small appeal" type="button" disabled title="Appeals are paused">Appeals back in ${wait}</button>`;
+  return `<button class="btn small appeal" id="appealBtn" type="button" title="Think you're right? The AI will check it. This locks in your answer.">⚖️ Appeal</button>`;
+}
+async function loadAppealStatus() {
+  try {
+    const r = await rpc('lp_appeal_status', { p_secret: S.secret });
+    APPEAL.banUntil = r && r.banned_until ? Date.parse(r.banned_until) : 0;
+    APPEAL.losses = r ? r.losses : 0;
+  } catch (e) {}
+}
+async function loadExtraAnswers() {
+  try {
+    const list = await rpc('lp_extra_answers');
+    EXTRA_ANS = Object.create(null);
+    for (const x of list || []) (EXTRA_ANS[x.s + '\u0001' + x.q] ||= []).push({ a: x.a, p: x.p });
+  } catch (e) {}
+}
+function appealBanPopup(until) {
+  const t = new Date(until).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const box = $('#popup');
+  box.className = 'popup warning';
+  box.innerHTML = `<div class="pop-card" role="alertdialog" aria-modal="true">
+      <div class="pop-tag">⚖️ APPEALS PAUSED</div>
+      <div class="pop-msg">You lost 10 appeals in 3 hours, so appeals are paused for 3 hours (until ${esc(t)}). You can still play as normal.</div>
+      <div class="pop-from">From Little Print · only you can see this</div>
+      <button class="pop-ok" type="button">Got it</button></div>`;
+  box.querySelector('.pop-ok').onclick = () => { box.className = 'popup hidden'; box.innerHTML = ''; };
+  box.querySelector('.pop-ok').focus();
+}
+async function doAppeal(text) {
+  if (P.answered || P.appealed) return;
+  P.appealed = true;
+  const left = P.timed && P.endAt ? Math.max(0, P.endAt - Date.now()) : null;
+  stopTimer();
+  const box = $('#msg');
+  const lock = on => { $('#ansForm').querySelectorAll('input,button').forEach(el => el.disabled = on); $('#qActions').classList.toggle('hidden', on); };
+  lock(true);
+  box.innerHTML = `<div class="msg ask"><span class="appeal-wait">⚖️ Checking “${esc(text)}” with the AI…</span></div>`;
+  const resume = (html, canRetry) => {
+    if (canRetry) P.appealed = false;
+    lock(false);
+    box.innerHTML = html;
+    if (left !== null) { if (left > 500) startTimer(left); else return finalize(null, 'timeout'); }
+    $('#ans').focus();
+  };
+  try {
+    if (!S.name) await register($('#who').value.trim() || '').catch(() => register(''));
+    const res = await fetch(APPEAL_URL, { method: 'POST',
+      headers: { 'Content-Type': 'application/json', apikey: SB_KEY, Authorization: 'Bearer ' + SB_KEY },
+      body: JSON.stringify({ secret: S.secret, subject: P.subj, question: P.qText, typed: text }) });
+    const r = await res.json();
+    if (r.banned_until) {
+      APPEAL.banUntil = Date.parse(r.banned_until);
+      appealBanPopup(r.banned_until);
+      return resume(`<div class="msg wrong">Appeals are paused for ${appealWait()}. Keep guessing!</div>`, false);
+    }
+    if (r.error) return resume(`<div class="msg wrong">${esc(r.error)}</div>`, !!r.retry);
+    if (r.won) {
+      const found = currentAnswers().find(a => r.matched && a.display.toLowerCase() === r.matched.toLowerCase());
+      const hit = found ? { ...found, pts: r.points } : { display: text, pts: r.points, extra: true };
+      return finalize(hit, 'correct', text, 'appeal', r.reason || '');
+    }
+    APPEAL.losses = r.losses ?? APPEAL.losses + 1;
+    if (r.banned_until) APPEAL.banUntil = Date.parse(r.banned_until);
+    finalize(null, 'appeal-lost', text, '', r.reason || '');
+    if (r.banned_until) { appealBanPopup(r.banned_until); loadNotices(); }
+  } catch (e) {
+    resume(`<div class="msg wrong">Couldn't reach the appeal checker. Check your internet and try again.</div>`, true);
+  }
+}
+loadAppealStatus(); loadExtraAnswers();
 
 /* ======================= ACCOUNTS (email + password) ======================= */
 const SB_AUTH = 'https://wtedtqaiyormmfilqmja.supabase.co/auth/v1/';
