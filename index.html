@@ -329,6 +329,7 @@
   .auth-stat b { display: block; font-family: 'JetBrains Mono', monospace; font-size: 20px; }
   .auth-stat span { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: .12em; color: var(--muted); }
   .auth-note { font-size: 12px; color: var(--muted); margin-top: 12px; line-height: 1.4; }
+  .fixnote { font-size: 13px; color: var(--muted); margin-top: 6px; }
   .credit { position: fixed; right: 10px; bottom: 8px; z-index: 30; font: 600 11px 'JetBrains Mono', monospace; letter-spacing: .06em; color: var(--muted); background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 3px 7px; opacity: .85; text-decoration: none; cursor: pointer; transition: opacity .15s, transform .15s; }
   .credit:hover { opacity: 1; transform: translateY(-1px); color: var(--ink); }
 </style>
@@ -1349,7 +1350,7 @@ const BANK = {
   ["Name an argument for referendums", "more democratic|direct democracy;legitimacy;settles constitutional questions|entrenchment;increases participation|engagement;political education;resolves party splits;popular sovereignty;check on government", "1.3 Electoral systems"],
   ["Name an argument against referendums", "tyranny of the majority;voters lack knowledge|complex issues;undermines parliament|undermines representative democracy;low turnout;misinformation|misleading campaigns;divisive|division;government controls timing and question;oversimplifies issues|binary choice;voter fatigue;not legally binding|advisory", "1.3 Electoral systems"],
   ["Name a type of government that can form after a UK election", "majority government|majority;coalition government|coalition;minority government|minority;confidence and supply arrangement|confidence and supply;national government|government of national unity", "1.3 Electoral systems"],
-  ["Name an example of coalition or minority government in UK politics", "2010 coalition|conservative lib dem coalition|cameron clegg coalition;2017 conservative minority|may minority government|dup deal;1974 labour minority|wilson 1974;lib-lab pact|lib lab pact 1977;snp minority government 2007|snp 2007;scottish labour lib dem coalition 1999|scotland 1999 coalition;welsh labour plaid coalition|one wales;bute house agreement|snp green deal;wartime coalition|churchill coalition;1931 national government", "1.3 Electoral systems"],
+  ["Name an example of coalition or minority government in UK politics", "2010 coalition|conservative lib dem coalition|cameron clegg coalition;2017 conservative minority|may minority government|dup deal|theresa may|theresa may government;1974 labour minority|wilson 1974;lib-lab pact|lib lab pact 1977;snp minority government 2007|snp 2007;scottish labour lib dem coalition 1999|scotland 1999 coalition;welsh labour plaid coalition|one wales;bute house agreement|snp green deal;wartime coalition|churchill coalition;1931 national government", "1.3 Electoral systems"],
   ["Name a UK general election year since 1945", "1997;2024;2019;1979;2017;2010;2015;1945;2005;2001;1983;1992;1987;1974;1966;1970;1964;1959;1955;1951;1950", "1.4 Voting behaviour and the media"],
   ["Name a reason Labour won the 1997 election", "tony blair|blair;new labour|rebranding;tory sleaze|sleaze;black wednesday|erm exit;conservative divisions over europe|tory splits;the sun backed labour|sun support;time for a change|18 years of tory rule;tactical voting;pledge card;clause iv rewritten;spin|mandelson|campbell", "1.4 Voting behaviour and the media"],
   ["Name a reason the Conservatives won in 1979", "winter of discontent;labour isnt working poster|labour isnt working|saatchi;high inflation|inflation;imf crisis|imf loan;union strikes|trade union power;callaghan's crisis what crisis|crisis what crisis;right to buy promise;c2 skilled workers swung|c2 voters;vote of no confidence", "1.4 Voting behaviour and the media"],
@@ -1381,7 +1382,7 @@ const BANK = {
   ["Name a liberal thinker on the Edexcel spec", "john locke|locke;john stuart mill|mill|js mill|j s mill;mary wollstonecraft|wollstonecraft;john rawls|rawls;betty friedan|friedan", "1.6 Liberalism"],
   ["Name a type of freedom or individualism in liberalism", "negative freedom;positive freedom;egoistical individualism;developmental individualism;freedom under the law", "1.6 Liberalism"],
   ["Name a type of equality liberals support", "equality of opportunity;foundational equality;formal equality;legal equality|equality before the law;political equality|one person one vote;social justice", "1.6 Liberalism"],
-  ["Name an idea of classical liberalism", "minimal state|night-watchman state|night watchman state;negative freedom;laissez-faire|free market;egoistical individualism;natural rights;social contract;mechanistic theory;self-reliance;meritocracy", "1.6 Liberalism"],
+  ["Name an idea of classical liberalism", "minimal state|night-watchman state|night watchman state;negative freedom;laissez-faire|free market|invisible hand;egoistical individualism;natural rights;social contract;mechanistic theory;self-reliance;meritocracy", "1.6 Liberalism"],
   ["Name an idea of modern liberalism", "positive freedom;enabling state;welfare state|welfare;keynesianism|keynesian economics;social justice;developmental individualism;equality of opportunity;managed capitalism;social liberalism", "1.6 Liberalism"],
   ["Name a feature of liberal democracy", "free elections|regular elections;civil liberties|rights;rule of law;limited government;free press|free media;independent judiciary;constitution;separation of powers;pluralism;universal suffrage;tolerance", "1.6 Liberalism"],
   ["Name a reason liberals are wary of democracy", "tyranny of the majority;uneducated voters|ignorance of voters;threat to individual rights|threat to minorities;mob rule;conformity;populism", "1.6 Liberalism"],
@@ -1401,7 +1402,7 @@ const BANK = {
   ["Name an idea linked to Anthony Giddens", "third way|the third way;equality of opportunity;social investment state|social investment;community;responsibility|no rights without responsibilities;accepting the free market;new labour;globalisation", "1.7 Socialism"],
   ["Name a feature of social democracy", "welfare state;mixed economy;keynesian economics|keynesianism;redistribution|progressive taxation;full employment;nationalisation of key industries;trade union rights;comprehensive education;managed capitalism", "1.7 Socialism"],
   ["Name a feature of communism", "common ownership;classless society;stateless society|withering away of the state;planned economy|central planning;dictatorship of the proletariat;one-party state;collectivisation;from each according to ability to each according to need", "1.7 Socialism"],
-  ["Name how socialists see human nature", "social|sociable;cooperative|cooperation;socially determined|nurture;rational;altruistic|altruism;malleable;fraternal|fraternity", "1.7 Socialism"],
+  ["Name how socialists see human nature", "social|sociable;cooperative|cooperation;socially determined|nurture;rational;altruistic|altruism;malleable|adaptable;fraternal|fraternity", "1.7 Socialism"],
   ["Name a source of the UK constitution", "statute law|statutes|acts of parliament;common law|case law|judicial precedent;conventions;authoritative works|works of authority;treaties|international treaties;royal prerogative;eu law (before brexit)|eu law", "2.1 The constitution"],
   ["Name a key historical document in the UK constitution", "magna carta;bill of rights 1689|bill of rights;act of settlement 1701|act of settlement;acts of union 1707|act of union|acts of union;parliament act 1911|1911 parliament act;parliament act 1949|1949 parliament act;european communities act 1972;human rights act 1998;scotland act 1998;constitutional reform act 2005", "2.1 The constitution"],
   ["Name a feature or principle of the UK constitution", "parliamentary sovereignty;rule of law;uncodified;unentrenched|flexible;unitary;constitutional monarchy;fusion of powers|parliamentary government;devolution;conventions;twin pillars", "2.1 The constitution"],
@@ -2291,10 +2292,25 @@ function renderSetup() {
 $('#timerOn').onchange = e => { S.timer = e.target.checked; save(); };
 
 /* ======================= MATCHING & SCORING ======================= */
+/* How a typed answer is marked, most certain first:
+   1. The same once tidied up: capitals, punctuation, "the/of/and", plurals and word endings
+      (laminate / laminating), UK/US spelling (colour/color, fibre/fiber, organise/organize),
+      numbers (2nd = second), word order, chemical formulas (H2SO4 = sulfuric acid), and words
+      that mean the same thing (rise = increase, firm = business, public ownership = nationalisation).
+   2. Counted straight away: small typos (enviroment), extra words around a right answer
+      ("air pollution" for pollution), or a left-off word every answer shares ("tensile" for tensile test).
+   3. Less certain ones ask "Did you mean ...?": bigger typos, sound-alike spellings (sykology),
+      or part of a longer answer ("rot" for dry rot).
+   Guards stop near-misses that are really different things: mitosis/meiosis, import/export,
+   renewable/non-renewable, north/south, a different year, or an opposite word added ("not", "no"). */
+
 function words(s) {
-  return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+  return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/['‘’`´]/g, '')
+    .replace(/\b(e\.g|i\.e|etc)\b\.?/g, ' ')
     .replace(/c\+\+/g, 'cplusplus').replace(/c#/g, 'csharp').replace(/&/g, ' and ')
     .replace(/\+/g, ' plus ').replace(/!/g, ' factorial ')
+    .replace(/(\d),(\d{3})\b/g, '$1$2')
     .replace(/[^a-z0-9]+/g, ' ').trim().split(' ').filter(Boolean);
 }
 const FILLER = new Set(['the', 'a', 'an', 'of', 'and', 'to', 'for', 'in', 'on', 'by', 'with']);
@@ -2303,99 +2319,627 @@ function norm(s) {
   if (w.length > 1) w = w.filter(x => !FILLER.has(x));   // keep a lone "and" (logic gate)
   return w.join('');
 }
-// crude stem so laminate / laminating / lamination all match
-function stem(w) {
+// the old, simple ending-stripper (still used for the first, strictest check)
+function stemOld(w) {
   const r = w.replace(/(ations|ation|ating|ated|ates|ate|ings|ing|ions|ion|ers|er|ed|es|s)$/, '');
   return r.length >= 4 ? r : w;
 }
 function stemKey(s) {
   let w = words(s);
   if (w.length > 1) w = w.filter(x => !FILLER.has(x));
-  return w.map(stem).join('');
+  return w.map(stemOld).join('');
 }
-// generic words a player might leave off ("finger" for "finger joint")
-const GENERIC = new Set(['joint', 'joints', 'test', 'gauge', 'saw', 'sort', 'sorting', 'process', 'method', 'machine', 'tool',
-  'printing', 'casting', 'welding', 'moulding', 'molding', 'forming', 'board', 'paper', 'fibre', 'fiber', 'finish', 'ratio',
+// generic words a player might leave off ("finger" for "finger joint") or add ("oak wood")
+const GENERIC_WORDS = ['joint', 'test', 'testing', 'gauge', 'saw', 'sort', 'sorting', 'process', 'method', 'machine', 'tool',
+  'printing', 'casting', 'welding', 'moulding', 'forming', 'board', 'paper', 'fibre', 'finish', 'ratio',
   'theory', 'approach', 'register', 'protocol', 'gate', 'lobe', 'muscle', 'bone', 'cell', 'valve', 'node', 'tax', 'duty',
-  'act', 'regulations', 'plating', 'coating', 'drawing', 'view', 'projection', 'line', 'chart', 'symbol', 'material', 'materials',
+  'act', 'regulations', 'plating', 'coating', 'drawing', 'view', 'projection', 'line', 'chart', 'symbol', 'material',
   'unemployment', 'competition', 'monopoly', 'reaction', 'substitution', 'addition', 'elimination', 'experiment', 'study',
   'memory', 'phase', 'quark', 'boson', 'rays', 'waves', 'numbers', 'number', 'distribution', 'rule', 'proof', 'lever', 'system',
-  'square', 'drill', 'steel', 'wood', 'tree', 'timber', 'callipers', 'calipers', 'caliper', 'plane', 'chisel', 'clamp', 'vice', 'cutter',
-  'printer', 'robot', 'sander', 'glue', 'adhesive', 'fitting', 'fittings', 'screw', 'analysis', 'diagram', 'model', 'matrix']);
+  'square', 'drill', 'steel', 'wood', 'tree', 'timber', 'callipers', 'plane', 'chisel', 'clamp', 'vice', 'cutter',
+  'printer', 'robot', 'sander', 'glue', 'adhesive', 'fitting', 'screw', 'analysis', 'diagram', 'model', 'matrix',
+  'effect', 'principle', 'index', 'hypothesis', 'explanation', 'technique', 'strategy', 'policy', 'concept', 'idea',
+  'term', 'curve', 'graph', 'scale', 'law', 'bond', 'bonding', 'force', 'treaty', 'agreement', 'case', 'scheme', 'programme',
+  'campaign', 'movement', 'style', 'design', 'device', 'equipment', 'apparatus', 'instrument', 'software', 'language',
+  'disease', 'condition', 'disorder', 'syndrome', 'factor', 'feature', 'example', 'sector', 'industry', 'method', 'stage',
+  'level', 'type', 'kind', 'form', 'thing', 'things', 'one', 'ones', 'name', 'called', 'known', 'basically', 'probably'];
 const PROMPT_SKIP = new Set(['name', 'you', 'your', 'that', 'would', 'might', 'should', 'used', 'use', 'from', 'found', 'make',
-  'made', 'type', 'types', 'kind', 'way', 'ways', 'one', 'on', 'or', 'is', 'are', 'its', 'it', 'can', 'could', 'which', 'what', 'level']);
-function promptWords(prompt) {
-  const out = new Set();
-  for (const w of words(prompt)) if (!PROMPT_SKIP.has(w) && !FILLER.has(w) && w.length >= 3) { out.add(w); out.add(w.replace(/s$/, '')); }
+  'made', 'type', 'types', 'kind', 'way', 'ways', 'one', 'on', 'or', 'is', 'are', 'its', 'it', 'can', 'could', 'which', 'what', 'level',
+  'key', 'main', 'famous', 'common', 'typical', 'typically', 'important', 'example', 'uk', 'a', 'an', 'the', 'of', 'in', 'level']);
+const STOP = new Set([...FILLER, 'its', 'it', 'their', 'them', 'they', 'this', 'that', 'these', 'those', 'is', 'are', 'was', 'were',
+  'be', 'been', 'being', 'some', 'any', 'very', 'really', 'from', 'into', 'onto', 'at', 'as', 'via', 'eg', 'ie', 'etc', 'like',
+  'such', 'so', 'just', 'quite', 'also', 'thing', 'things', 'stuff', 'basically', 'probably', 'maybe', 'i', 'think', 'called']);
+
+/* ---------- spelling (UK/US), numbers, plural and word endings ---------- */
+const SPELL_WORD = { aluminium: 'aluminum', grey: 'gray', tyre: 'tire', tyres: 'tires', plough: 'plow', defence: 'defense',
+  licence: 'license', offence: 'offense', pretence: 'pretense', practise: 'practice', judgement: 'judgment', ageing: 'aging',
+  acknowledgement: 'acknowledgment', kerb: 'curb', cheque: 'check', disc: 'disk', discs: 'disks', cosy: 'cozy', artefact: 'artifact',
+  artefacts: 'artifacts', sceptic: 'skeptic', sceptical: 'skeptical', jewellery: 'jewelry', draught: 'draft', gaol: 'jail', axe: 'ax',
+  doughnut: 'donut', moustache: 'mustache', learnt: 'learned', burnt: 'burned', spelt: 'spelled', dreamt: 'dreamed', spoilt: 'spoiled',
+  amongst: 'among', whilst: 'while', towards: 'toward', orientated: 'oriented', enquiry: 'inquiry', enquiries: 'inquiries',
+  storey: 'story', storeys: 'stories', mum: 'mom', pyjamas: 'pajamas', speciality: 'specialty', manoeuvre: 'maneuver',
+  manoeuvres: 'maneuvers', caesium: 'cesium', fulfil: 'fulfill', instil: 'instill', enrol: 'enroll', skilful: 'skillful',
+  calipers: 'callipers', caliper: 'calliper', vapor: 'vapour', vapors: 'vapours' };
+const AE_OE = [['haem', 'hem'], ['anaem', 'anem'], ['aemia', 'emia'], ['oesoph', 'esoph'], ['oestr', 'estr'], ['foet', 'fet'],
+  ['diarrhoea', 'diarrhea'], ['gynaec', 'gynec'], ['paediatr', 'pediatr'], ['orthopaed', 'orthoped'], ['encyclopaed', 'encycloped'],
+  ['aesthet', 'esthet'], ['palaeo', 'paleo'], ['coeliac', 'celiac'], ['archaeo', 'archeo'], ['caesarean', 'cesarean'],
+  ['oedema', 'edema'], ['amoeb', 'ameb'], ['faec', 'fec'], ['leukaem', 'leukem'], ['sulph', 'sulf'], ['mould', 'mold'],
+  ['smoulder', 'smolder'], ['anaesth', 'anesth'], ['aetiol', 'etiol'], ['haemo', 'hemo']];
+function spell(t) {
+  if (SPELL_WORD[t]) return SPELL_WORD[t];
+  for (const [a, b] of AE_OE) if (t.includes(a)) t = t.replace(a, b);
+  if (t.length >= 5) {
+    t = t.replace(/iz(e|es|ed|ing|er|ers|ation|ations)$/, 'is$1')
+      .replace(/yz(e|es|ed|ing|er|ers)$/, 'ys$1')
+      .replace(/our(s|ed|ing|ite|ites|able|ably|ful|less|ism|ist|er|ers)?$/, 'or$1')
+      .replace(/([bdtv])re(s)?$/, '$1er$2')
+      .replace(/ogue(s)?$/, 'og$1')
+      .replace(/amme(s)?$/, 'am$1')
+      .replace(/^(travel|model|label|fuel|cancel|signal|level|channel|total|counsel|marvel|jewel|dial|equal|tunnel|pedal|panel|quarrel|rival|shovel|initial|distil)l(ed|ing|er|ers|ation)$/, '$1$2');
+  }
+  return t;
+}
+const NUMW = { zero: '0', one: '1', two: '2', three: '3', four: '4', five: '5', six: '6', seven: '7', eight: '8', nine: '9',
+  ten: '10', eleven: '11', twelve: '12', thirteen: '13', fourteen: '14', fifteen: '15', sixteen: '16', seventeen: '17',
+  eighteen: '18', nineteen: '19', twenty: '20', thirty: '30', forty: '40', fifty: '50', sixty: '60', seventy: '70',
+  eighty: '80', ninety: '90', hundred: '100', thousand: '1000', million: '1000000', billion: '1000000000',
+  first: '1st', second: '2nd', third: '3rd', fourth: '4th', fifth: '5th', sixth: '6th', seventh: '7th', eighth: '8th',
+  ninth: '9th', tenth: '10th', ii: '2', iii: '3', iv: '4', vi: '6', vii: '7', viii: '8', ix: '9', xi: '11', xii: '12' };
+const IRREG = { children: 'child', men: 'man', women: 'woman', people: 'person', teeth: 'tooth', feet: 'foot', mice: 'mouse',
+  geese: 'goose', lives: 'life', leaves: 'leaf', knives: 'knife', wives: 'wife', halves: 'half', shelves: 'shelf', wolves: 'wolf',
+  calves: 'calf', thieves: 'thief', loaves: 'loaf', mitochondria: 'mitochondrion', bacteria: 'bacterium', criteria: 'criterion',
+  phenomena: 'phenomenon', indices: 'index', matrices: 'matrix', vertices: 'vertex', analyses: 'analysis', hypotheses: 'hypothesis',
+  theses: 'thesis', crises: 'crisis', bases: 'base', axes: 'axis', stimuli: 'stimulus', fungi: 'fungus', alveoli: 'alveolus',
+  villi: 'villus', bronchi: 'bronchus', loci: 'locus', nuclei: 'nucleus', radii: 'radius', foci: 'focus', cacti: 'cactus',
+  ova: 'ovum', genera: 'genus', algae: 'alga', larvae: 'larva', vertebrae: 'vertebra', antennae: 'antenna', formulae: 'formula',
+  quanta: 'quantum', spectra: 'spectrum', maxima: 'maximum', minima: 'minimum', strata: 'stratum', curricula: 'curriculum',
+  ganglia: 'ganglion', appendices: 'appendix', oxen: 'ox', phyla: 'phylum', taxa: 'taxon', diagnoses: 'diagnosis' };
+const STEM_KEEP = new Set(['news', 'series', 'species', 'means', 'lens', 'chaos', 'canvas', 'atlas', 'bias', 'thesis', 'analysis',
+  'basis', 'crisis', 'axis', 'status', 'focus', 'census', 'virus', 'campus', 'bonus', 'corpus', 'genus', 'fungus', 'stimulus',
+  'nucleus', 'radius', 'cactus', 'consensus', 'business', 'witness', 'harness', 'always', 'perhaps', 'united', 'ceiling',
+  'king', 'thing', 'ring', 'string', 'spring', 'sing', 'wing', 'bring', 'sterling', 'pudding', 'wedding', 'anything', 'nothing',
+  'something', 'everything', 'during', 'morning', 'evening', 'hundred', 'sacred', 'naked', 'wicked', 'kindred', 'need', 'speed',
+  'seed', 'feed', 'breed', 'greed', 'weed', 'reed', 'creed', 'bleed', 'proceed', 'succeed', 'exceed', 'indeed', 'agreed',
+  'lightning', 'herring', 'shilling', 'darling', 'sibling', 'seedling', 'duckling', 'ping', 'swing', 'sling', 'cling']);
+const COMPAR = new Set(['fair', 'cheap', 'fast', 'slow', 'strong', 'weak', 'high', 'low', 'large', 'small', 'great', 'long', 'short',
+  'quick', 'rich', 'poor', 'safe', 'clean', 'young', 'old', 'hard', 'soft', 'easy', 'heavy', 'light', 'big', 'hot', 'cold',
+  'wide', 'deep', 'tall', 'close', 'late', 'early', 'simple', 'tight', 'loose', 'thick', 'thin', 'dense', 'sharp', 'smooth',
+  'rough', 'warm', 'cool', 'dry', 'wet', 'fine', 'tough', 'pure', 'dear', 'strict', 'harsh', 'lean', 'steep', 'full']);
+function stem(w) {
+  if (w.length < 4 || /\d/.test(w) || STEM_KEEP.has(w)) return w;
+  if (IRREG[w]) return IRREG[w];
+  const c = w.match(/^(.+?)(er|est)$/);
+  if (c) for (const b of [c[1], c[1] + 'e', c[1].replace(/i$/, 'y'), c[1].replace(/(.)\1$/, '$1')]) if (COMPAR.has(b)) return b;
+  if (/(ss|us|is|ics|ous)$/.test(w)) { /* glass, virus, analysis, physics, famous */ }
+  else if (/(sh|ch|x|z|ss)es$/.test(w)) w = w.slice(0, -2);
+  else if (/ies$/.test(w) && w.length > 4) w = w.slice(0, -3) + 'y';
+  else if (/s$/.test(w)) w = w.slice(0, -1);
+  let r = w;
+  if (/is(ations?)$/.test(r)) r = r.replace(/isations?$/, 'is');
+  else if (/is(e|ed|es|ing|er|ers)$/.test(r) && r.length > 5) r = r.replace(/is(e|ed|es|ing|er|ers)$/, 'is');
+  else if (/ations?$/.test(r) && r.length > 7) r = r.replace(/ations?$/, 'at');
+  else if (/ional$/.test(r)) r = r.replace(/ional$/, 'ion');
+  else if (/ical$/.test(r) && r.length > 6) r = r.replace(/ical$/, 'ic');
+  else if (/mental$/.test(r) && r.length > 9) r = r.replace(/mental$/, '');
+  else if (/ments?$/.test(r) && r.length > 7) r = r.replace(/ments?$/, '');
+  else if (/ness$/.test(r) && r.length > 7) r = r.replace(/ness$/, '');
+  else if (/ists?$/.test(r) && r.length > 6) r = r.replace(/ists?$/, 'ism');
+  else if (/ing$/.test(r) && r.length > 5) r = r.replace(/ing$/, '');
+  else if (/ed$/.test(r) && r.length > 4 && !/eed$/.test(r)) r = r.replace(/ed$/, '');
+  if (r !== w && /([bdgkmnprt])\1$/.test(r)) r = r.slice(0, -1);
+  w = r;
+  if (w.length > 3) w = w.replace(/e$/, '').replace(/y$/, 'i');
+  return w;
+}
+
+/* ---------- words and phrases that mean the same thing ---------- */
+const PHRASES = [
+  ['north america', 'northamerica'], ['south america', 'southamerica'], ['latin america', 'latinamerica'],
+  ['central america', 'centralamerica'], ['north korea', 'northkorea'], ['south korea', 'southkorea'],
+  ['south africa', 'southafrica'], ['northern ireland', 'northernireland'], ['new zealand', 'newzealand'],
+  ['united states of america', 'usa'], ['united states', 'usa'], ['u s a', 'usa'], ['u s', 'usa'], ['america', 'usa'],
+  ['united kingdom', 'uk'], ['great britain', 'uk'], ['britain', 'uk'], ['u k', 'uk'],
+  ['european union', 'eu'], ['united nations', 'un'], ['soviet union', 'ussr'],
+  ['2nd world war', 'ww2'], ['world war 2', 'ww2'], ['wwii', 'ww2'], ['ww 2', 'ww2'],
+  ['1st world war', 'ww1'], ['world war 1', 'ww1'], ['world war i', 'ww1'], ['wwi', 'ww1'], ['great war', 'ww1'], ['ww 1', 'ww1'],
+  ['co2', 'carbon dioxide'], ['ch4', 'methane'], ['n2o', 'nitrous oxide'], ['so2', 'sulfur dioxide'], ['no2', 'nitrogen dioxide'],
+  ['h2o', 'water'], ['o3', 'ozone'], ['o2', 'oxygen'], ['n2', 'nitrogen'], ['h2', 'hydrogen'], ['cl2', 'chlorine'],
+  ['hcl', 'hydrochloric acid'], ['h2so4', 'sulfuric acid'], ['hno3', 'nitric acid'], ['h3po4', 'phosphoric acid'],
+  ['hbr', 'hydrobromic acid'], ['hf', 'hydrofluoric acid'], ['ch3cooh', 'ethanoic acid'], ['hcooh', 'methanoic acid'],
+  ['h2co3', 'carbonic acid'], ['naoh', 'sodium hydroxide'], ['koh', 'potassium hydroxide'], ['nh3', 'ammonia'],
+  ['nacl', 'sodium chloride'], ['caco3', 'calcium carbonate'], ['h2o2', 'hydrogen peroxide'], ['c6h12o6', 'glucose'],
+  ['public ownership', 'nationalisation'], ['state ownership', 'nationalisation'], ['common ownership', 'nationalisation'],
+  ['government ownership', 'nationalisation'], ['state intervention', 'government intervention'], ['university fees', 'tuition fees'], ['uni fees', 'tuition fees'],
+  ['university tuition', 'tuition'], ['young people', 'youth'], ['young person', 'youth'], ['old people', 'elderly'],
+  ['older people', 'elderly'], ['lib dems', 'liberal democrat'], ['lib dem', 'liberal democrat'], ['libdem', 'liberal democrat'],
+  ['libdems', 'liberal democrat'], ['liberal democrats', 'liberal democrat'], ['tories', 'conservative'], ['tory', 'conservative'],
+  ['r and d', 'research and development'], ['r d', 'research and development'], ['industrial action', 'strike'],
+  ['armed forces', 'military'], ['army', 'military'], ['tropical storm', 'hurricane'], ['tropical cyclone', 'hurricane'],
+  ['cyclone', 'hurricane'], ['typhoon', 'hurricane'], ['tidal wave', 'tsunami'], ['forest fire', 'wildfire'],
+  ['bush fire', 'wildfire'], ['bushfire', 'wildfire'], ['volcanic eruption', 'volcano'], ['eruption', 'volcano'],
+  ['earth quake', 'earthquake'], ['landslip', 'landslide'], ['crude oil', 'oil'], ['petroleum', 'oil'],
+  ['mobile phone', 'phone'], ['smartphone', 'phone'], ['telephone', 'phone'], ['cell phone', 'phone'], ['television', 'tv'],
+  ['higher education', 'university'], ['third world', 'developing'], ['less developed', 'developing'], ['ledc', 'developing'],
+  ['medc', 'developed'], ['freedom of speech', 'free speech']];
+const SYN_GROUPS = [
+  ['increase', 'rise', 'raise', 'grow', 'high', 'more', 'boost', 'surge', 'growing'],
+  ['decrease', 'reduce', 'reduction', 'low', 'less', 'fewer', 'decline', 'lessen'],
+  ['big', 'large', 'huge', 'massive'], ['small', 'little', 'tiny'],
+  ['fast', 'quick', 'rapid', 'speedy', 'swift'], ['cheap', 'inexpensive', 'affordable'], ['expensive', 'dear', 'costly', 'pricey'],
+  ['ban', 'prohibit', 'prohibition', 'outlaw', 'forbid'], ['use', 'utilise', 'usage'], ['make', 'create', 'creation'],
+  ['help', 'aid', 'assist', 'assistance'], ['worker', 'employee', 'staff', 'laborer', 'workforce'],
+  ['firm', 'business', 'company'], ['government', 'govt', 'gov'], ['law', 'legislation', 'statute'],
+  ['rule', 'regulation'], ['aim', 'goal', 'objective', 'target'], ['effect', 'impact', 'consequence'],
+  ['stage', 'phase', 'step'], ['problem', 'issue', 'difficulty'], ['wage', 'pay', 'salary'], ['rich', 'wealthy', 'affluent'],
+  ['poor', 'bad'], ['job', 'employment'], ['child', 'kid'], ['young', 'youth'], ['old', 'elderly', 'aged', 'aging'],
+  ['illness', 'disease', 'sickness'], ['death', 'mortality', 'fatality'], ['buy', 'purchase'], ['sell', 'sale'],
+  ['shop', 'store', 'retailer'], ['car', 'vehicle', 'automobile'], ['global', 'worldwide'],
+  ['city', 'urban'], ['countryside', 'rural'], ['start', 'begin', 'launch', 'commence'], ['tax', 'taxation'],
+  ['money', 'cash'], ['clear', 'clarity'], ['freedom', 'liberty'], ['speech', 'expression'],
+  ['tension', 'tensile'], ['compression', 'compressive'], ['heat', 'thermal'], ['electric', 'electrical'],
+  ['heart', 'cardiac'], ['lung', 'pulmonary'], ['kidney', 'renal'], ['muscle', 'muscular'], ['sun', 'solar'],
+  ['farm', 'agriculture', 'agricultural', 'farming'], ['transport', 'transportation'], ['internet', 'online'],
+  ['advert', 'advertisement', 'advertising'], ['danger', 'hazard'], ['safe', 'safety'], ['health', 'healthy'],
+  ['diet', 'nutrition'], ['sleep', 'rest'], ['woman', 'female'], ['man', 'male'], ['person', 'people'],
+  ['judge', 'judiciary', 'judicial'], ['king', 'queen', 'monarch', 'monarchy', 'crown', 'royal'],
+  ['prison', 'jail'], ['university', 'uni'], ['doctor', 'gp', 'physician'], ['refugee', 'asylum'],
+  ['nuclear', 'atomic'], ['waste', 'rubbish', 'garbage', 'trash'], ['pollution', 'contamination'],
+  ['sea', 'ocean'], ['information', 'info'], ['technology', 'tech'], ['department', 'dept'],
+  ['maximum', 'max'], ['minimum', 'min'], ['approximate', 'approx'], ['international', 'intl'],
+  ['nationalisation', 'nationalise'], ['privatisation', 'privatise'], ['deregulation', 'deregulate'],
+  ['democracy', 'democratic'], ['autocracy', 'autocratic'], ['theocracy', 'theocratic'], ['bureaucracy', 'bureaucratic'],
+  ['economy', 'economic'], ['environment', 'environmental'], ['conservative', 'conservatism'], ['socialism', 'socialist'],
+  ['feminism', 'feminist'], ['liberalism', 'liberal'], ['nationalism', 'nationalist'], ['anarchism', 'anarchist'],
+  ['capitalism', 'capitalist'], ['communism', 'communist'], ['fascism', 'fascist'], ['ecologism', 'ecologist'],
+  ['monetarism', 'monetarist'], ['keynesianism', 'keynesian'], ['malleable', 'adaptable'], ['tilting', 'tipping'],
+  ['protest', 'demonstration', 'march'], ['strike', 'walkout'], ['symbol', 'logo'], ['picture', 'image', 'photo', 'photograph']];
+const CONTRAST = new Set(['north', 'south', 'east', 'west', 'northern', 'southern', 'eastern', 'western', 'central', 'new', 'old',
+  'upper', 'inner', 'outer', 'internal', 'external', 'non', 'anti', 'pre', 'post', 'sub', 'super', 'hyper', 'hypo', 'micro', 'macro',
+  'semi', 'neo', 'pseudo', 'quasi', 'counter', 'positive', 'negative', 'left', 'right', 'single', 'double', 'multi', 'poly', 'mono',
+  'bi', 'tri', 'partial', 'direct', 'indirect', 'formal', 'informal', 'public', 'private', 'fixed', 'variable', 'inverse', 'reverse',
+  'opposite', 'primary', 'secondary', 'tertiary', 'quaternary', '1st', '2nd', '3rd', '4th', '5th', 'nonrenewable', 'renewable',
+  'domestic', 'foreign', 'absolute', 'relative', 'hard', 'soft', 'strong', 'weak', 'deep', 'shallow', 'aerobic', 'anaerobic',
+  'organic', 'inorganic', 'kinetic', 'potential', 'static', 'dynamic', 'visible', 'invisible', 'unofficial', 'official',
+  'small', 'large', 'big', 'little', 'reduced', 'oxidised', 'hydrated', 'dehydrated', 'concentrated', 'dilute']);
+const NEGATORS = new Set(['no', 'not', 'non', 'without', 'anti', 'lack', 'absence', 'never', 'abolish', 'abolishing', 'abolition',
+  'scrap', 'scrapping', 'removal', 'remove', 'removing', 'end', 'ending', 'stop', 'stopping', 'against', 'opposite', 'reverse',
+  'inverse', 'un', 'dis', 'de', 'ban', 'banning', 'zero', 'none', 'except', 'instead', 'but', 'false', 'fake', 'mis', 'mal', 'counter']);
+// prefixes that are joined to the next word (multi party = multiparty, non-renewable = nonrenewable)
+const JOIN_PRE = new Set(['non', 'anti', 'multi', 'semi', 'pre', 'post', 'sub', 'super', 'inter', 'intra', 'micro', 'macro', 'neo',
+  'pseudo', 'quasi', 'co', 'self', 'bi', 'tri', 'mono', 'poly', 'hyper', 'hypo', 'over', 'under', 'counter', 'mid', 'ex', 're']);
+// pairs of word-starts that flip the meaning (abduction / adduction, hypertonic / hypotonic, import / export)
+const OPP_PRE = [['ab', 'ad'], ['af', 'ef'], ['hyper', 'hypo'], ['inter', 'intra'], ['endo', 'exo'], ['endo', 'ecto'],
+  ['micro', 'macro'], ['homo', 'hetero'], ['pre', 'post'], ['sub', 'super'], ['over', 'under'], ['in', 'out'], ['up', 'down'],
+  ['ana', 'cata'], ['im', 'ex'], ['in', 'ex'], ['en', 'ex'], ['intro', 'extro'], ['in', 'de'], ['ap', 'de'], ['in', 're'],
+  ['de', 're'], ['dis', 're'], ['mono', 'poly'], ['uni', 'multi'], ['mono', 'di'], ['di', 'tri'], ['mono', 'tri'], ['bi', 'tri'],
+  ['uni', 'bi'], ['pro', 'anti'], ['pro', 'con'], ['ag', 'antag'], ['in', 'e'], ['max', 'min'], ['in', 'di'], ['con', 'di'],
+  ['hetero', 'auto'], ['photo', 'chemo'], ['a', 'e']];
+const NEG_PRE = new Set(['non', 'un', 'in', 'im', 'il', 'ir', 'dis', 'de', 'a', 'an', 'anti', 'counter', 'mis', 'mal', 'ab']);
+// element symbols, only used when the question is about elements/metals
+const ELEMENTS = { fe: 'iron', cu: 'copper', ni: 'nickel', cr: 'chromium', co: 'cobalt', mn: 'manganese', ti: 'titanium',
+  v: 'vanadium', zn: 'zinc', sc: 'scandium', ag: 'silver', au: 'gold', pt: 'platinum', pd: 'palladium', hg: 'mercury', pb: 'lead',
+  sn: 'tin', al: 'aluminum', mg: 'magnesium', na: 'sodium', k: 'potassium', ca: 'calcium', li: 'lithium', h: 'hydrogen',
+  he: 'helium', c: 'carbon', n: 'nitrogen', o: 'oxygen', f: 'fluorine', ne: 'neon', si: 'silicon', p: 'phosphorus', s: 'sulfur',
+  cl: 'chlorine', ar: 'argon', br: 'bromine', i: 'iodine', kr: 'krypton', xe: 'xenon', rn: 'radon', u: 'uranium', w: 'tungsten',
+  rb: 'rubidium', cs: 'cesium', sr: 'strontium', ba: 'barium', be: 'beryllium', b: 'boron', ga: 'gallium', ge: 'germanium',
+  as: 'arsenic', se: 'selenium', fr: 'francium', ra: 'radium', pu: 'plutonium', th: 'thorium', ir: 'iridium', os: 'osmium',
+  mo: 'molybdenum', rh: 'rhodium', ru: 'ruthenium', cd: 'cadmium', bi: 'bismuth', sb: 'antimony', te: 'tellurium' };
+// plain lookup tables only (so a typed word like "constructor" can't find JavaScript's own built-ins)
+for (const o of [SPELL_WORD, NUMW, IRREG, ELEMENTS]) Object.setPrototypeOf(o, null);
+const ELEMENT_Q = /\b(metal|metals|element|elements|ion|ions|atom|catalyst|transition|halogen|halogens|group|period|noble gas|alkali)\b/i;
+
+let PHRASE_MAP = null, SYN = null, GENERIC = null, VOCAB = null, DF = null, NEG_C = null, CON_C = null, VOCAB_ALL = null, VOCAB_BY = {};
+let VSURF = null, VSURF_ALL = null, VSURF_BY = {}, KNOWN_BY = {};
+const BASE_CACHE = new Map(), CANON_CACHE = new Map();
+function baseTok(t) {          // spelling + numbers + endings, no synonyms
+  let r = BASE_CACHE.get(t);
+  if (r !== undefined) return r;
+  r = spell(t);
+  if (NUMW[r]) r = NUMW[r];
+  else { r = stem(r); r = NUMW[r] || r; }
+  BASE_CACHE.set(t, r);
+  return r;
+}
+function applyPhrases(arr) {   // swap known phrases (longest first): "united states of america" → usa
+  const out = [];
+  for (let i = 0; i < arr.length;) {
+    const list = PHRASE_MAP[arr[i]];
+    let hit = null;
+    if (list) for (const p of list) if (p.w.every((x, k) => arr[i + k] === x)) { hit = p; break; }
+    if (hit) { out.push(...hit.b); i += hit.w.length; } else { out.push(arr[i]); i++; }
+  }
   return out;
 }
-function coreOf(alias, strip) {
-  const w = words(alias).filter(x => !FILLER.has(x));
-  if (w.length < 2) return null;
-  const kept = w.filter(x => !strip.has(x) && !GENERIC.has(x));
-  if (!kept.length || kept.length === w.length) return null;
-  const c = kept.join('');
-  return c.length >= 3 ? c : null;
+function setupMatcher() {
+  if (SYN) return;
+  PHRASE_MAP = Object.create(null);
+  for (const [a, b] of PHRASES) { const w = a.split(' '); (PHRASE_MAP[w[0]] ||= []).push({ w, b: b.split(' ') }); }
+  for (const k in PHRASE_MAP) PHRASE_MAP[k].sort((x, y) => y.w.length - x.w.length);
+  SYN = Object.create(null);
+  for (const g of SYN_GROUPS) {
+    const id = baseTok(g[0]);
+    for (const w of g) { const k = baseTok(w); if (!SYN[k]) SYN[k] = id; }
+  }
+  GENERIC = new Set(GENERIC_WORDS.map(w => canonTok(w)));
+  NEG_C = new Set([...NEGATORS].flatMap(w => [w, canonTok(w)]));
+  CON_C = new Set([...CONTRAST].flatMap(w => [w, canonTok(w)]));
+  // every word used in any answer, and how many answers use it (for the near-miss guard)
+  VOCAB_ALL = new Set(); VSURF_ALL = new Set(); DF = Object.create(null);
+  if (typeof BANK !== 'undefined') for (const [subj, qs] of Object.entries(BANK)) {
+    const V = VOCAB_BY[subj] = new Set(), W = VSURF_BY[subj] = new Set(), K = KNOWN_BY[subj] = new Set();
+    for (const q of qs) for (const ans of q[1].split(';')) {
+      const seen = new Set();
+      for (const al of ans.split('|')) {
+        K.add(norm(al));
+        for (const t of tokens(al)) { V.add(t); VOCAB_ALL.add(t); seen.add(t); }
+        for (const w of words(al)) { const x = spell(w); W.add(x); VSURF_ALL.add(x); }
+      }
+      for (const t of seen) DF[t] = (DF[t] || 0) + 1;
+    }
+  }
+  VOCAB = VOCAB_ALL; VSURF = VSURF_ALL;
+}
+function canonTok(t) {
+  let r = CANON_CACHE.get(t);
+  if (r === undefined) { const b = baseTok(t); r = SYN[b] || b; CANON_CACHE.set(t, r); }
+  return r;
+}
+// text → canonical tokens (plus each word as typed, for typo checks)
+function tokenPairs(s, opts = {}) {
+  let w = words(s).map(spell);
+  const j = [];
+  for (let i = 0; i < w.length; i++) {   // join prefixes onto the next word: non renewable → nonrenewable
+    if (JOIN_PRE.has(w[i]) && i + 1 < w.length && !/^\d/.test(w[i + 1]) && !STOP.has(w[i + 1])) { j.push(w[i] + w[i + 1]); i++; }
+    else j.push(w[i]);
+  }
+  let mapped = applyPhrases(j.map(t => NUMW[t] || t));
+  // keep the typed spelling where a word wasn't swapped for a phrase
+  const surfOf = mapped.length === j.length ? j : mapped;
+  if (opts.elements && mapped.length === 1 && ELEMENTS[mapped[0]]) mapped = ELEMENTS[mapped[0]].split(' ');
+  let pairs = mapped.map((t, i) => [canonTok(t), mapped.length === surfOf.length ? surfOf[i] : t]);
+  const kept = pairs.filter(([t, w]) => !STOP.has(w));
+  return kept.length ? kept : pairs;
+}
+function tokens(s, opts) { return tokenPairs(s, opts).map(p => p[0]); }
+
+/* ---------- typo distance: cheap for doubled letters, swapped letters, neighbouring keys, vowel mix-ups ---------- */
+const KPOS = {};
+['qwertyuiop', 'asdfghjkl', 'zxcvbnm'].forEach((row, r) => [...row].forEach((ch, c) => KPOS[ch] = [r, c + r * 0.5]));
+const VOW = new Set('aeiouy');
+const SIMILAR = new Set(['ck', 'kc', 'cs', 'sc', 'sz', 'zs', 'iy', 'yi', 'gj', 'jg', 'mn', 'nm', 'fv', 'vf', 'dt', 'td', 'bp', 'pb']);
+function subCost(a, b) {
+  if (a === b) return 0;
+  if (VOW.has(a) && VOW.has(b)) return 0.6;
+  if (SIMILAR.has(a + b)) return 0.5;
+  const p = KPOS[a], q = KPOS[b];
+  if (p && q && Math.abs(p[0] - q[0]) <= 1 && Math.abs(p[1] - q[1]) <= 1.01) return 0.6;
+  return 1;
+}
+function gapCost(w, i) {
+  if ((i > 0 && w[i] === w[i - 1]) || (i + 1 < w.length && w[i] === w[i + 1])) return 0.4;
+  return VOW.has(w[i]) ? 0.8 : 0.9;
+}
+function wdist(s, t) {
+  const m = s.length, n = t.length;
+  if (Math.abs(m - n) > 6) return 99;
+  const d = [];
+  for (let i = 0; i <= m; i++) d.push(new Array(n + 1).fill(0));
+  for (let i = 1; i <= m; i++) d[i][0] = d[i - 1][0] + gapCost(s, i - 1);
+  for (let j = 1; j <= n; j++) d[0][j] = d[0][j - 1] + gapCost(t, j - 1);
+  for (let i = 1; i <= m; i++) for (let j = 1; j <= n; j++) {
+    let v = Math.min(d[i - 1][j] + gapCost(s, i - 1), d[i][j - 1] + gapCost(t, j - 1), d[i - 1][j - 1] + subCost(s[i - 1], t[j - 1]));
+    if (i > 1 && j > 1 && s[i - 1] === t[j - 2] && s[i - 2] === t[j - 1]) v = Math.min(v, d[i - 2][j - 2] + 0.6);
+    d[i][j] = v;
+  }
+  return d[m][n];
 }
 function lev(a, b) {
   if (Math.abs(a.length - b.length) > 3) return 9;
   const dp = Array.from({ length: a.length + 1 }, (_, i) => [i]);
   for (let j = 1; j <= b.length; j++) dp[0][j] = j;
   for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++)
-    dp[i][j] = Math.min(dp[i-1][j] + 1, dp[i][j-1] + 1, dp[i-1][j-1] + (a[i-1] === b[j-1] ? 0 : 1));
+    dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
   return dp[a.length][b.length];
 }
-function parseAnswers(str, prompt = '') {
+function tol(L) {          // [count it, ask first]
+  if (L <= 3) return [0.4, 0.4];
+  if (L === 4) return [0.6, 1.0];
+  if (L <= 6) return [1.0, 1.6];
+  if (L <= 9) return [1.4, 2.3];
+  if (L <= 13) return [2.0, 3.1];
+  return [2.6, 3.9];
+}
+// would changing a into b flip the meaning? (mitosis/meiosis, renewable/nonrenewable, afferent/efferent)
+function opposite(a, b) {
+  let s = 0;
+  while (s < a.length && s < b.length && a[a.length - 1 - s] === b[b.length - 1 - s]) s++;
+  if (s < 3) return false;
+  // try the split a few letters either side, so "reflation"/"deflation" is seen as re-/de-
+  for (let k = s; k >= Math.max(3, s - 3); k--) {
+    const pa = a.slice(0, a.length - k), pb = b.slice(0, b.length - k);
+    if (!pa || !pb) { if (k === s && NEG_PRE.has(pa || pb)) return true; continue; }
+    if (OPP_PRE.some(([x, y]) => (pa === x && pb === y) || (pa === y && pb === x))) return true;
+  }
+  return false;
+}
+function phon(s) {
+  let t = s.replace(/[^a-z]/g, '');
+  if (!t) return '';
+  t = t.replace(/^ps/, 's').replace(/^pn/, 'n').replace(/^kn/, 'n').replace(/^wr/, 'r').replace(/^x/, 's')
+    .replace(/ph/g, 'f').replace(/gh/g, 'g').replace(/ck/g, 'k').replace(/sch/g, 'sk').replace(/ch/g, 'k')
+    .replace(/c(?=[eiy])/g, 's').replace(/c/g, 'k').replace(/q/g, 'k').replace(/x/g, 'ks').replace(/z/g, 's')
+    .replace(/dg/g, 'j').replace(/wh/g, 'w').replace(/y/g, 'i').replace(/(.)\1+/g, '$1');
+  return t[0] + t.slice(1).replace(/[aeiou]/g, '');
+}
+// how close is typed word g to answer word f? → {cost, tier: 0 same, 1 count it, 2 ask} or null
+function tokMatch(g, f, gs = g, fs = f) {
+  if (g === f) return { cost: 0, tier: 0 };
+  // the typed word is itself a real answer word (meiosis, storming): it means something else, not a typo
+  if ((VSURF.has(gs) || VSURF.has(gs.replace(/e?s$/, ''))) && VOCAB.has(f)) return null;
+  if (/\d/.test(g) || /\d/.test(f)) {                      // numbers: only a misspelt number word ("secnod")
+    if (!/^[a-z]{4,}$/.test(gs) || !/^[a-z]{4,}$/.test(fs)) return null;
+    g = gs; f = fs;
+  }
+  if (gs.length < 2) return null;
+  if (opposite(g, f) || opposite(gs, fs)) return null;
+  if (gs.length >= 5 && fs.startsWith(gs) && gs.length >= fs.length * 0.7) return { cost: 1, tier: 2 };   // cut short: "photosynth"
+  const L = Math.min(gs.length, fs.length);
+  if (L / Math.max(gs.length, fs.length) < 0.7) return null;
+  const cost = Math.min(wdist(g, f), wdist(gs, fs)) + (gs[0] !== fs[0] ? 0.5 : 0);
+  const [auto, ask] = tol(L);
+  if (cost <= auto) return { cost, tier: 1 };
+  if (cost <= ask) return { cost, tier: 2 };
+  if (L >= 5 && phon(gs) && phon(gs) === phon(fs) && cost <= ask * 1.6) return { cost, tier: 2 };
+  return null;
+}
+
+/* ---------- reading a question's answers ---------- */
+function promptWords(prompt) {           // old-style (raw words)
+  const out = new Set();
+  for (const w of words(prompt)) if (!PROMPT_SKIP.has(w) && !FILLER.has(w) && w.length >= 3) { out.add(w); out.add(w.replace(/s$/, '')); }
+  return out;
+}
+function promptToks(prompt) {
+  const out = new Set();
+  for (const w of words(prompt)) if (!PROMPT_SKIP.has(w) && !STOP.has(w) && w.length >= 3) out.add(canonTok(w));
+  return out;
+}
+const OLD_GENERIC = new Set(GENERIC_WORDS);
+function coreOf(alias, strip) {
+  const w = words(alias).filter(x => !FILLER.has(x));
+  if (w.length < 2) return null;
+  const kept = w.filter(x => !strip.has(x) && !OLD_GENERIC.has(x));
+  if (!kept.length || kept.length === w.length) return null;
+  const c = kept.join('');
+  return c.length >= 3 ? c : null;
+}
+function analyse(text, P, cat, opts) {
+  const pairs = tokenPairs(text, opts);
+  const toks = pairs.map(p => p[0]);
+  const surf = Object.create(null);
+  for (const [t, w] of pairs) if (!surf[t]) surf[t] = w;
+  const isNum = t => /^\d+$/.test(t);
+  const nums = toks.filter(isNum);
+  const drop = t => GENERIC.has(t) || P.has(t) || (cat && cat.has(t));
+  let core = toks.filter(t => !isNum(t) && !drop(t));
+  if (!core.length) core = toks.filter(t => !isNum(t) && !GENERIC.has(t));
+  if (!core.length) core = toks.filter(t => !isNum(t));
+  if (!core.length) core = toks.slice();
+  const w = words(text).filter(x => !STOP.has(x));
+  const plain = w.map(baseTok).sort().join(' ');
+  const gen = toks.filter(t => GENERIC.has(t) && !P.has(t) && !core.includes(t));
+  const skey = words(text).filter(x => !STOP.has(x)).map(spell).join('');
+  const rw = words(text);
+  const conj = rw.includes('and') || rw.includes('or');
+  const preps = rw.filter(x => ['of', 'for', 'in', 'on', 'with', 'from', 'to', 'by', 'at'].includes(x));
+  return { toks, surf, nums, core, plain, gen, skey, conj, preps, key: toks.join(''), sorted: [...toks].sort().join(' '), head: core[core.length - 1],
+    initials: w.length >= 2 ? w.map(x => x[0]).join('') : '', initialsAll: words(text).length >= 2 ? words(text).map(x => x[0]).join('') : '' };
+}
+function parseAnswers(str, prompt = '', subj = '') {
+  setupMatcher();
   const list = str.split(';').map(a => a.split('|'));
   const n = list.length;
   const strip = promptWords(prompt);
+  const P = promptToks(prompt);
   const answers = list.map((aliases, i) => ({
     display: aliases[0],
     keys: aliases.map(norm),
     stems: aliases.map(stemKey),
     cores: aliases.map(al => coreOf(al, strip)).filter(Boolean),
+    aliases,
     pts: n === 1 ? MAX_PTS : 5 + Math.round((50 * i / (n - 1)) / 5) * 5
   }));
   // a short form only counts if it points at exactly one answer
-  const owners = {};
+  const owners = Object.create(null);
   for (const a of answers) for (const c of new Set(a.cores)) (owners[c] ||= new Set()).add(a);
   for (const a of answers) a.cores = a.cores.filter(c => owners[c].size === 1 && !answers.some(o => o !== a && o.keys.includes(c)));
+  // words most of the answers share ("test" in tensile test / impact test) can be left off
+  const df = Object.create(null);
+  for (const a of answers) for (const t of new Set(a.aliases.flatMap(al => tokens(al)))) df[t] = (df[t] || 0) + 1;
+  const cat = new Set(Object.keys(df).filter(t => df[t] >= 3 && df[t] >= n * 0.35));
+  const elements = ELEMENT_Q.test(prompt);
+  for (const a of answers) {
+    a.forms = a.aliases.map(al => analyse(al, P, cat));
+    a.nums = new Set(a.forms.flatMap(f => f.nums));
+  }
+  // leaving words off must not make two answers look the same ("renal artery" / "pulmonary artery" for "...kidneys or lungs")
+  const byCore = Object.create(null);
+  for (const a of answers) for (const f of a.forms) (byCore[[...f.core].sort().join(' ')] ||= new Set()).add(a);
+  for (const a of answers) for (const f of a.forms) if (byCore[[...f.core].sort().join(' ')].size > 1) {
+    const full = f.toks.filter(t => !/^\d+$/.test(t));
+    if (full.length > f.core.length) { f.core = full; f.head = full[full.length - 1]; }
+  }
+  answers.ctx = { P, cat, elements, prompt, vocab: VOCAB_BY[subj] || VOCAB_ALL, vsurf: VSURF_BY[subj] || VSURF_ALL, known: KNOWN_BY[subj] || null };
   return answers;
 }
-function mark(input, answers, prompt = '') {
-  // returns { a, exact } or null
-  const g = norm(input);
-  if (!g) return null;
-  // 1. exact match on any accepted wording, then plural / suffix variants
-  for (const a of answers) if (a.keys.includes(g)) return { a, exact: true };
-  const variants = new Set([g, g + 's', g.replace(/(gate|sort|algorithm)$/, '')]);
-  if (g.length >= 4) variants.add(g.replace(/s$/, ''));
-  for (const a of answers) if (a.keys.some(k => variants.has(k))) return { a, exact: true };
-  // 2. same word, different ending (laminate / laminating)
-  const gs = stemKey(input);
-  if (gs.length >= 4) for (const a of answers) if (a.stems.includes(gs)) return { a, exact: true };
-  // 3. key word on its own ("finger" for "finger joint"), or extra question words added ("oak wood")
-  for (const a of answers) if (a.cores.some(c => variants.has(c))) return { a, exact: true };
-  const strip = promptWords(prompt);
-  const gw = words(input).filter(x => !FILLER.has(x));
-  const trimmed = gw.filter(x => !strip.has(x) && !GENERIC.has(x)).join('');
-  if (trimmed && trimmed !== g && trimmed.length >= 3) {
-    for (const a of answers) if (a.keys.includes(trimmed) || a.cores.includes(trimmed)) return { a, exact: true };
+
+/* ---------- comparing a typed answer with one accepted wording ---------- */
+function compareForm(G, F) {
+  // years / numbers must agree when both have them
+  if (G.nums.length && F.nums.length && G.nums.join(' ') !== F.nums.join(' ')) return null;
+  if (G.key === F.key || G.sorted === F.sorted) return { tier: 0, kind: 'same', cost: 0, extra: 0, miss: 0, left: [] };
+  // "create laws" is not "making policy": if both name a general word, it has to be the same one
+  if (G.gen.length && F.gen.length && !G.gen.some(t => F.gen.includes(t))) return null;
+  // line up each answer word with the closest typed word
+  const used = new Set(), pairs = [];
+  const fc = F.core;
+  const gAll = G.toks.filter(t => !/^\d+$/.test(t));
+  const cand = [];
+  for (let i = 0; i < fc.length; i++) for (let j = 0; j < gAll.length; j++) {
+    const m = tokMatch(gAll[j], fc[i], G.surf[gAll[j]], F.surf[fc[i]]);
+    if (m) cand.push({ i, j, ...m });
   }
-  // 4. close spelling: ask "did you mean…?"
-  if (g.length >= 4) {
-    const tol = g.length >= 12 ? 3 : g.length >= 8 ? 2 : 1;
-    let bestA = null, bestD = 9;
-    for (const a of answers) for (const k of [...a.keys, ...a.cores]) {
-      if (k.length < 4) continue;
-      const d = lev(g, k);
-      if (d <= tol && d < bestD) { bestD = d; bestA = a; }
+  cand.sort((a, b) => a.cost - b.cost);
+  const fDone = new Set();
+  for (const c of cand) if (!fDone.has(c.i) && !used.has(c.j)) { fDone.add(c.i); used.add(c.j); pairs.push(c); }
+  // typed words that match one of the answer's less important words (a typo of "velocity" in "final velocity") aren't extras
+  const fRest = F.toks.filter(t => !fc.includes(t));
+  gAll.forEach((t, j) => {
+    if (used.has(j) || F.toks.includes(t)) return;
+    let bm = null;
+    for (const o of fRest) { const m = tokMatch(t, o, G.surf[t], F.surf[o]); if (m && (!bm || m.cost < bm.cost)) bm = m; }
+    if (bm) { used.add(j); pairs.push({ i: -1, j, ...bm }); }
+  });
+  const tier = pairs.reduce((t, p) => Math.max(t, p.tier), 0);
+  const cost = pairs.reduce((t, p) => t + p.cost, 0);
+  const gCore = new Set(G.core);
+  const extras = gAll.filter((t, j) => !used.has(j) && gCore.has(t) && !F.toks.includes(t));
+  const left = gAll.filter((t, j) => !used.has(j) && !F.toks.includes(t));
+  const missing = fc.filter((t, i) => !fDone.has(i));
+  // the answer's less important words that weren't typed (years don't count)
+  const fSkipped = F.toks.filter(t => !/^\d+$/.test(t) && !fc.includes(t) && !G.toks.includes(t) &&
+    !gAll.some(g => tokMatch(g, t, G.surf[g], F.surf[t])));
+  // a word typed in place of one of them is a swap, not a match ("logical rules" is not "logic error")
+  if (fSkipped.length && left.some(t => G.core.includes(t) || G.gen.includes(t))) return null;
+  if (!pairs.some(p => p.i >= 0)) return null;
+  // typed words a player adds that flip the meaning ("not", "north", "non")
+  const flips = extras.some(t => NEG_C.has(t) || CON_C.has(t) || /^(non|anti)./.test(t)) || G.toks.some(t => NEG_C.has(t) && !F.toks.includes(t));
+  if (!missing.length) {
+    if (!extras.length) {
+      // a shortened answer ("harm" for harm principle) only if what's left is telling ("elections" isn't Elections Act 2022)
+      const hit = F.toks.filter(t => G.toks.includes(t) || pairs.some(p => p.i >= 0 && fc[p.i] === t));
+      const telling = hit.length >= 2 || hit.some(t => (DF[t] || 0) <= 12);
+      if (fSkipped.length && !telling) return null;
+      return { tier, kind: tier ? 'typo' : 'same', cost, extra: 0, miss: 0, extras, left };
     }
-    if (bestA) return { a: bestA, exact: false };
+    if (flips || tier > 1) return null;
+    // every word of the answer has to be there (not swapped: "market penetration" is not "market orientation")
+    const fAll = F.toks.filter(t => !/^\d+$/.test(t));
+    const gotAll = fAll.every(t => G.toks.includes(t) || pairs.some(p => (p.i >= 0 ? fc[p.i] : null) === t) ||
+      gAll.some(g => tokMatch(g, t, G.surf[g], F.surf[t])));
+    if (!gotAll) return null;
+    // extra words go in front ("environmental pollution"), not after ("customer service" is not customers)
+    const mpos = pairs.map(p => p.j), lo = Math.min(...mpos), hi = Math.max(...mpos);
+    const ex = gAll.map((t, j) => j).filter(j => extras.includes(gAll[j]));
+    if (ex.some(j => j > hi) && !G.conj) return null;
+    if (ex.some(j => j < lo) && G.preps.some(p => !F.preps.includes(p))) return null;   // "proportion of income"
+    if (extras.length === 1) return { tier: 1, kind: 'extra', cost, extra: 1, miss: 0, extras, left };
+    return null;
+  }
+  // some of the answer's words are missing: only "Did you mean...?", and only if what they typed is the important part
+  if (flips || extras.length) return null;
+  if (missing.some(t => NEG_C.has(t))) return null;
+  const matched = fc.filter((t, i) => fDone.has(i));
+  const coverage = matched.length / fc.length;
+  const distinctive = matched.length >= 2 || matched.some(t => t.length >= 3 && (DF[t] || 0) <= 30);
+  if (!distinctive) return null;
+  // the rarest (most telling) word of the answer must be one they typed: "book" is not "bodyspace book"
+  const rare = Math.min(...fc.map(t => DF[t] || 0));
+  if (!matched.some(t => (DF[t] || 0) === rare)) return null;
+  const lenOf = list => list.reduce((n, t) => n + t.length, 0);
+  if (lenOf(matched) < lenOf(missing)) return null;
+  if (fDone.has(fc.length - 1) || coverage >= 0.66) return { tier: 2, kind: 'part', cost, extra: extras.length, miss: missing.length, extras, left };
+  return null;
+}
+function compareJoined(G, F) {
+  // same letters but spaced differently or a typo across words ("lightbulb", "infra red")
+  if (G.toks.length === F.toks.length) return null;
+  if (G.nums.join(' ') !== F.nums.join(' ')) return null;
+  const g = G.toks.filter(t => !/^\d+$/.test(t)).join(''), f = F.toks.filter(t => !/^\d+$/.test(t)).join('');
+  if (g.length < 5 || f.length < 5 || g === f) return g === f && g ? { tier: 0, kind: 'same', cost: 0, extra: 0, miss: 0 } : null;
+  if (VOCAB.has(g) && VOCAB.has(f)) return null;
+  if (opposite(g, f) || g[0] !== f[0]) return null;
+  const cost = wdist(g, f);
+  if (cost <= 1.0) return { tier: 1, kind: 'typo', cost, extra: 0, miss: 0 };
+  if (cost <= 1.6) return { tier: 2, kind: 'typo', cost, extra: 0, miss: 0 };
+  const pg = phon(g), pf = phon(f);
+  if (pg.length >= 4 && lev(pg, pf) <= (pf.length >= 8 ? 1 : 0) && cost <= 3) return { tier: 2, kind: 'sound', cost, extra: 0, miss: 0 };
+  return null;
+}
+function compareAcronym(G, F, raw) {
+  // "gdp" for gross domestic product, or "corporate social responsibility" for csr
+  const w = words(raw).filter(x => !STOP.has(x));
+  if (w.length === 1 && /^[a-z]{2,6}$/.test(w[0])) {
+    if (w[0].length >= 3 && (w[0] === F.initials || w[0] === F.initialsAll)) return { tier: 1, kind: 'short', cost: 0.5, extra: 0, miss: 0 };
+  }
+  if (F.toks.length === 1 && /^[a-z]{3,6}$/.test(F.toks[0]) && G.initials.length >= 3) {
+    if (F.toks[0] === G.initials || F.toks[0] === G.initialsAll) return { tier: 1, kind: 'short', cost: 0.5, extra: 0, miss: 0 };
   }
   return null;
 }
-
+const KIND_ORDER = { same: 0, typo: 1, short: 2, extra: 3, sound: 4, part: 5 };
+function mark(input, answers, prompt = '') {
+  // returns { a, exact, how } or null.  exact: count it now.  how: 'exact' | 'fixed' | 'close'
+  const g = norm(input);
+  if (!g) return null;
+  // 1. exactly an accepted wording, plurals, old-style endings, key word on its own
+  for (const a of answers) if (a.keys.includes(g)) return { a, exact: true, how: 'exact' };
+  const variants = new Set([g, g + 's', g.replace(/(gate|sort|algorithm)$/, '')]);
+  if (g.length >= 4) variants.add(g.replace(/s$/, ''));
+  for (const a of answers) if (a.keys.some(k => variants.has(k))) return { a, exact: true, how: 'exact' };
+  const gs = stemKey(input);
+  if (gs.length >= 4) for (const a of answers) if (a.stems.includes(gs)) return { a, exact: true, how: 'exact' };
+  for (const a of answers) if (a.cores.some(c => variants.has(c))) return { a, exact: true, how: 'exact' };
+  const strip = promptWords(prompt);
+  const gw = words(input).filter(x => !FILLER.has(x));
+  const trimmed = gw.filter(x => !strip.has(x) && !OLD_GENERIC.has(x)).join('');
+  if (trimmed && trimmed !== g && trimmed.length >= 3) {
+    for (const a of answers) if (a.keys.includes(trimmed) || a.cores.includes(trimmed)) return { a, exact: true, how: 'exact' };
+  }
+  // 2. the smarter checks
+  setupMatcher();
+  const ctx = answers.ctx || { P: promptToks(prompt), cat: new Set(), elements: ELEMENT_Q.test(prompt) };
+  VOCAB = ctx.vocab || VOCAB_ALL; VSURF = ctx.vsurf || VSURF_ALL;
+  const G = analyse(input, ctx.P, ctx.cat, { elements: ctx.elements });
+  if (!G.toks.length) return null;
+  if (G.key.length > 120) return null;
+  const cands = [];
+  const isKnown = ctx.known && ctx.known.has(g);
+  for (const a of answers) if (!G.nums.length || (a.nums.size && G.nums.every(n => a.nums.has(n)))) a.forms.forEach((F, k) => {
+    const r = compareForm(G, F) || compareJoined(G, F) || compareAcronym(G, F, input);
+    if (!r) return;
+    if (isKnown && r.kind !== 'same') return;
+    const overlap = G.toks.filter(t => F.toks.includes(t)).length - Math.abs(G.toks.length - F.toks.length) * 0.1;
+    cands.push({ a, F, overlap, scost: wdist(G.skey.slice(0, 40), F.skey.slice(0, 40)), ...r });
+  });
+  // leftover typed words that are (nearly) part of a different answer: only fine if that answer was typed in full too
+  const full = new Set(cands.filter(c => !c.miss && c.tier <= 1).map(c => c.a));
+  // a leftover word only clashes with another answer that is really there: a one-word answer, or more of its words typed
+  const near = (t, o, os) => o === t || !!tokMatch(t, o, G.surf[t] || t, os || o);
+  const nearOther = (a, t) => answers.some(o => o !== a && o.forms.some(f => f.core.some(x => near(t, x, f.surf[x])) &&
+    (f.core.length === 1 || f.core.filter(x => G.toks.some(g => near(g, x, f.surf[x]))).length >= 2)));
+  const ok = cands.filter(c => {
+    const clash = (c.left || []).filter(t => nearOther(c.a, t));
+    return !clash.length || clash.every(t => answers.some(o => o !== c.a && full.has(o) && o.forms.some(f => f.core.includes(t))));
+  });
+  let best = null;
+  for (const c of ok) {
+    const better = !best || c.tier < best.tier || (c.tier === best.tier && (KIND_ORDER[c.kind] < KIND_ORDER[best.kind] ||
+      (c.kind === best.kind && (c.extra < best.extra || (c.extra === best.extra && (c.miss < best.miss ||
+      (c.miss === best.miss && (c.overlap > best.overlap + 0.01 || (Math.abs(c.overlap - best.overlap) <= 0.01 &&
+      (c.cost < best.cost - 0.01 || (Math.abs(c.cost - best.cost) <= 0.01 && (c.scost < best.scost - 0.01 ||
+      (Math.abs(c.scost - best.scost) <= 0.01 && c.a.pts < best.a.pts)))))))))))));
+    if (better) best = c;
+  }
+  if (!best) return null;
+  if (best.tier === 1 && (best.kind === 'typo' || best.kind === 'extra') &&
+      ok.some(c => c.a !== best.a && c.tier <= 2 && !c.miss && c.cost <= best.cost + 0.5 && c.cost > 0 && c.scost <= best.scost + 0.5)) best = { ...best, tier: 2 };
+  const F = best.F;
+  const how = best.kind === 'same' ? (F && F.plain === G.plain ? 'same' : 'close') : best.kind === 'typo' || best.kind === 'sound' ? 'fixed' : 'close';
+  return { a: best.a, exact: best.tier <= 1, how };
+}
+// get the word lists ready in the background so the first answer isn't slow
+if (typeof window !== 'undefined') setTimeout(() => { try { setupMatcher(); } catch (e) {} }, 400);
 /* ======================= PAPER ======================= */
 function seeded(str) { // mulberry32 seeded from a string hash
   let h = 1779033703 ^ str.length;
@@ -2504,7 +3048,7 @@ function startTimer() {
 }
 function stopTimer() { if (P?.t) { clearInterval(P.t); P.t = null; } }
 
-function currentAnswers() { const q = BANK[P.subj][P.qs[P.i]]; return parseAnswers(q[1], q[0]); }
+function currentAnswers() { const q = BANK[P.subj][P.qs[P.i]]; return parseAnswers(q[1], q[0], P.subj); }
 
 function attempt(raw) {
   if (P.answered) return;
@@ -2512,7 +3056,7 @@ function attempt(raw) {
   const box = $('#msg'), input = $('#ans');
   if (!text) { box.innerHTML = `<div class="msg">Type an answer first.</div>`; input.focus(); return; }
   const r = mark(text, currentAnswers(), P.qText);
-  if (r && r.exact) return finalize(r.a, 'correct', text);
+  if (r && r.exact) return finalize(r.a, 'correct', text, r.how);
   if (r && !r.exact) {
     // possible typo: ask before accepting
     P.pending = { a: r.a, text };
@@ -2524,7 +3068,7 @@ function attempt(raw) {
         </span>
       </div>`;
     $('#yesBtn').focus();
-    $('#yesBtn').onclick = () => finalize(P.pending.a, 'correct', P.pending.text);
+    $('#yesBtn').onclick = () => finalize(P.pending.a, 'correct', P.pending.text, 'close');
     $('#noBtn').onclick = () => { P.pending = null; box.innerHTML = ''; input.select(); input.focus(); };
     return;
   }
@@ -2535,14 +3079,16 @@ function attempt(raw) {
   input.classList.remove('shake'); void input.offsetWidth; input.classList.add('shake');
 }
 
-function finalize(hit, how, given = '') {
+function finalize(hit, how, given = '', fix = '') {
   if (P.answered) return;
   P.answered = true; stopTimer();
   const answers = currentAnswers();
   const pts = hit ? hit.pts : 0;
   P.score += pts;
   P.log.push({ q: P.qText, given, hit: hit?.display || null, pts, wrong: P.wrong.slice() });
-  recordAnswer({ p: pts, s: P.subj, q: P.qText, a: hit ? hit.display : (given || (how === 'timeout' ? '(timed out)' : '(gave up)')), w: P.wrong.join(' | '), m: Date.now() - P.qStart });
+  // when the marker read past a typo or a different wording, keep what they actually typed too (shows in the admin site)
+  const noted = hit && (fix === 'fixed' || fix === 'close') && norm(given) !== norm(hit.display);
+  recordAnswer({ p: pts, s: P.subj, q: P.qText, a: hit ? (noted ? `${hit.display} (typed: ${given})`.slice(0, 80) : hit.display) : (given || (how === 'timeout' ? '(timed out)' : '(gave up)')), w: P.wrong.join(' | '), m: Date.now() - P.qStart });
 
   let msg;
   if (hit) msg = pts >= 45 ? 'Deep cut. Beautiful.' : pts >= 30 ? 'Nicely off the beaten track.' : pts >= 15 ? 'Correct, but a few others got there too.' : 'Correct, but that\'s the one everyone says.';
@@ -2556,6 +3102,7 @@ function finalize(hit, how, given = '') {
     <div class="fbrow"><div class="feedback">
       <span class="pts ${pts ? 'good' : 'zero'}" id="ptsNow">+${pts}</span>
       ${hit ? `<b>${esc(cap(hit.display))}</b>. ` : ''}${msg}
+      ${noted ? `<div class="fixnote">You typed “${esc(given)}”${fix === 'fixed' ? ' (spelling fixed)' : ' (close enough)'}</div>` : ''}
       <div class="all-label mono">ALL ANSWERS · MOST OBVIOUS → MOST OBSCURE</div>
       <div class="all">${answers.map(a => `<span class="ans ${hit && hit.display === a.display ? 'mine' : ''}">${esc(cap(a.display))}<i>${a.pts}</i></span>`).join('')}</div>
     </div></div>
