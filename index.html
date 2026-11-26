@@ -330,8 +330,7 @@
   .auth-stat span { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: .12em; color: var(--muted); }
   .auth-note { font-size: 12px; color: var(--muted); margin-top: 12px; line-height: 1.4; }
   .fixnote { font-size: 13px; color: var(--muted); margin-top: 6px; }
-  .credit { position: fixed; right: 10px; bottom: 8px; z-index: 30; font: 600 11px 'JetBrains Mono', monospace; letter-spacing: .06em; color: var(--muted); background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 3px 7px; opacity: .85; text-decoration: none; cursor: pointer; transition: opacity .15s, transform .15s; }
-  .credit:hover { opacity: 1; transform: translateY(-1px); color: var(--ink); }
+  .credit { position: fixed; right: 10px; bottom: 8px; z-index: 30; font: 600 11px 'JetBrains Mono', monospace; letter-spacing: .06em; color: var(--muted); background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 3px 7px; opacity: .85; pointer-events: none; }
 </style>
 </head>
 <body>
@@ -3628,6 +3627,6 @@ setInterval(() => { loadBoard(); flushScores(); checkReset(); }, 30000);
 setInterval(loadNotices, 15000);
 setInterval(maybePop, 1500);
 </script>
-<a class="credit" href="/big3.jpg" target="_blank" rel="noopener" title="Open the Big 3 poster">areeves</a>
+<div class="credit">areeves</div>
 </body>
 </html>
