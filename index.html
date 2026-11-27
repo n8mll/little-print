@@ -338,7 +338,8 @@
   .appeal-note { font-size: 14px; margin-top: 8px; padding: 8px 10px; border-radius: 10px; line-height: 1.4; }
   .appeal-note.won { background: color-mix(in srgb, var(--green) 14%, transparent); }
   .appeal-note.lost { background: color-mix(in srgb, var(--red) 12%, transparent); }
-  .credit { position: fixed; right: 10px; bottom: 8px; z-index: 30; font: 600 11px 'JetBrains Mono', monospace; letter-spacing: .06em; color: var(--muted); background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 3px 7px; opacity: .85; pointer-events: none; }
+  .credits { position: fixed; right: 10px; bottom: 8px; z-index: 30; display: flex; gap: 6px; pointer-events: none; }
+  .credit { font: 600 11px 'JetBrains Mono', monospace; letter-spacing: .06em; color: var(--muted); background: var(--card); border: 1px solid var(--rule); border-radius: 6px; padding: 3px 7px; opacity: .85; pointer-events: none; }
 </style>
 </head>
 <body>
@@ -3735,6 +3736,6 @@ setInterval(() => { loadBoard(); flushScores(); checkReset(); }, 30000);
 setInterval(loadNotices, 15000);
 setInterval(maybePop, 1500);
 </script>
-<div class="credit">areeves</div>
+<div class="credits"><div class="credit">nlittle</div><div class="credit">areeves</div></div>
 </body>
 </html>
